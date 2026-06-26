@@ -870,3 +870,13 @@ CREATE TABLE reportes_denuncias (
     FOREIGN KEY (reporte_id) REFERENCES reportes(id) ON DELETE CASCADE,
     UNIQUE KEY uk_denuncia (reporte_id, ip_hash)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ===== SUGERENCIAS =====
+
+CREATE TABLE sugerencias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL DEFAULT 'Anónimo',
+    email VARCHAR(200),
+    mensaje TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

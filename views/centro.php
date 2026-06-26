@@ -12,9 +12,28 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/centros-acopio">
+            <a class="navbar-brand fw-bold" href="/">
                 <i class="bi bi-house-heart-fill"></i> Centros de Acopio
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -438,6 +457,8 @@
         <div class="container text-center text-muted small">
             <i class="bi bi-house-heart-fill text-danger"></i>
             Centros de Acopio &mdash; Terremoto Venezuela
+            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
     </footer>
 

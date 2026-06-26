@@ -14,7 +14,25 @@
             <a class="navbar-brand fw-bold" href="/">
                 <i class="bi bi-house-heart-fill"></i> Centros de Acopio
             </a>
-            <span class="navbar-text text-white-50 small">Terremoto Venezuela</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -212,7 +230,8 @@
         <div class="container text-center text-muted small">
             <i class="bi bi-house-heart-fill text-danger"></i>
             Centros de Acopio &mdash; Terremoto Venezuela
-            &middot; Datos actualizados en tiempo real por la comunidad
+            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
         <div class="container text-center text-muted small mt-1">
             Proyecto libre de uso, sin fines de lucro ni monetización. No nos hacemos responsables por la veracidad de la información. Solo colaboramos por la situación de Venezuela.

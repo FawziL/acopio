@@ -299,3 +299,68 @@ La tabla `reportes` ahora acepta `centro_id` o `refugio_id` (uno de los dos obli
 - Si `centro_id` está presente → reporte asociado a un centro de acopio
 - Si `refugio_id` está presente → reporte asociado a un refugio
 - La tabla `reportes_denuncias` se mantiene igual (FK a `reportes.id`)
+
+---
+
+## Sugerencias (Formulario de Contacto)
+
+Formulario independiente para que los usuarios envíen sugerencias, reporten bugs o hagan preguntas sobre la plataforma.
+
+### Tabla
+
+```sql
+CREATE TABLE sugerencias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL DEFAULT 'Anónimo',
+    email VARCHAR(200),
+    mensaje TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+### Archivos
+
+| Archivo | Propósito |
+|---|---|
+| `api/sugerencias.php` | API para recibir sugerencias (POST con Turnstile) |
+| `views/sugerencias.php` | Formulario público |
+
+### API
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| POST | `/api/sugerencias.php` | Enviar sugerencia (nombre opcional, email opcional, mensaje obligatorio, Turnstile) |
+
+### Ruta
+
+| Ruta | Archivo |
+|---|---|
+| `/sugerencias` | `views/sugerencias.php` |
+
+---
+
+## Portales Relevantes
+
+Página con cards que agrupan enlaces a portales externos útiles durante la emergencia (personas desaparecidas, asistencia médica, donaciones, información oficial, apoyo psicológico, voluntariado).
+
+### Archivo
+
+| Archivo | Propósito |
+|---|---|
+| `views/portales.php` | Página con cards de enlaces relevantes |
+
+### Ruta
+
+| Ruta | Archivo |
+|---|---|
+| `/portales` | `views/portales.php` |
+
+### Navegación Global
+
+Todas las páginas comparten un navbar consistente con enlaces a:
+- **Centros** (`/centros-acopio`)
+- **Refugios** (`/refugios`)
+- **Portales** (`/portales`)
+- **Sugerencias** (`/sugerencias`)
+
+El footer de todas las páginas incluye badges de acceso rápido a Portales y Sugerencias.

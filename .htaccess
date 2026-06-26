@@ -11,6 +11,8 @@ RewriteRule ^centro$ views/centro.php [L,QSA]
 RewriteRule ^refugios$ views/refugios.php [L,QSA]
 RewriteRule ^registrar-refugio$ views/registrar-refugio.php [L,QSA]
 RewriteRule ^refugio$ views/refugio.php [L,QSA]
+RewriteRule ^sugerencias$ views/sugerencias.php [L,QSA]
+RewriteRule ^portales$ views/portales.php [L,QSA]
 
 # Raíz → index.php
 RewriteRule ^$ index.php [L,QSA]
