@@ -116,19 +116,6 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-danger">
                     <div class="card-body text-center py-4">
-                        <i class="bi bi-heart-pulse-fill display-3 text-danger"></i>
-                        <h5 class="card-title mt-3">Apoyo Psicológico</h5>
-                        <p class="card-text small text-muted">Líneas de atención y recursos de apoyo emocional para damnificados.</p>
-                        <a href="#" class="btn btn-outline-danger" target="_blank" rel="noopener">
-                            <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body text-center py-4">
                         <i class="bi bi-megaphone-fill display-3 text-danger"></i>
                         <h5 class="card-title mt-3">Voluntariado</h5>
                         <p class="card-text small text-muted">Regístrate como voluntario o busca grupos de ayuda organizada.</p>

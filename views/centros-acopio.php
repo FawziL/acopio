@@ -234,7 +234,7 @@
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
         <div class="container text-center text-muted small mt-1">
-            Proyecto libre de uso, sin fines de lucro ni monetización. . Solo colaboramos por la situación de Venezuela.
+            Proyecto libre de uso, sin fines de lucro ni monetización. Solo colaboramos por la situación de Venezuela.
         </div>
     </footer>
 
