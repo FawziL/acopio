@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS acopio_venezuela
+CREATE DATABASE IF NOT EXISTS apoya_venezuela
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE acopio_venezuela;
+USE apoya_venezuela;
 
 -- ===== TABLAS =====
 
