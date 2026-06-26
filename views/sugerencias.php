@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Terremoto Venezuela
+                <i class="bi bi-house-heart-fill"></i> Apoya Venezuela
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -92,7 +92,7 @@
     <footer class="bg-light py-3 mt-4">
         <div class="container text-center text-muted small">
             <i class="bi bi-house-heart-fill text-danger"></i>
-            Terremoto Venezuela &mdash; Centros de Acopio y Refugios
+            Apoya Venezuela &mdash; Centros de Acopio y Refugios
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>

@@ -1,4 +1,4 @@
-# Plan: Web de Centros de Acopio - Terremoto Venezuela
+# Plan: Web de Centros de Acopio - Apoya Venezuela
 
 ## Stack Tecnológico
 

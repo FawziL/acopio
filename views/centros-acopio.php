@@ -44,8 +44,8 @@
                 <p class="text-muted">Consulta los centros activos y lo que necesitan o tienen disponible.</p>
             </div>
             <div class="col-12 col-md-4 text-md-end">
-                <a href="/registrar-centro-acopio" class="btn btn-danger">
-                    <i class="bi bi-plus-circle"></i> Registrar centro
+                <a href="/registrar" class="btn btn-danger">
+                    <i class="bi bi-plus-circle"></i> Registrar
                 </a>
             </div>
         </div>
@@ -229,7 +229,7 @@
     <footer class="bg-light py-3 mt-4">
         <div class="container text-center text-muted small">
             <i class="bi bi-house-heart-fill text-danger"></i>
-            Centros de Acopio &mdash; Terremoto Venezuela
+            Centros de Acopio &mdash; Apoya Venezuela
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>

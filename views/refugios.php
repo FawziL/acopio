@@ -44,8 +44,8 @@
                 <p class="text-muted">Albergues disponibles para personas damnificadas.</p>
             </div>
             <div class="col-12 col-md-4 text-md-end">
-                <a href="/registrar-refugio" class="btn btn-danger">
-                    <i class="bi bi-plus-circle"></i> Registrar refugio
+                <a href="/registrar" class="btn btn-danger">
+                    <i class="bi bi-plus-circle"></i> Registrar
                 </a>
                 <a href="/centros-acopio" class="btn btn-outline-danger mt-1 mt-md-0">
                     <i class="bi bi-box-seam"></i> Centros de Acopio
@@ -228,7 +228,7 @@
     <footer class="bg-light py-3 mt-4">
         <div class="container text-center text-muted small">
             <i class="bi bi-house-heart-fill text-danger"></i>
-            Refugios &mdash; Terremoto Venezuela
+            Refugios &mdash; Apoya Venezuela
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
