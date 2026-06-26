@@ -100,9 +100,8 @@
                                 <label class="form-label">Teléfono</label>
                                 <div class="input-group">
                                     <select id="paso2-tel-operadora" class="form-select" style="max-width: 140px;" required>
-                                        <option value="">Operadora</option>
+                                        <option value="0414" selected>0414</option>
                                         <option value="0412">0412</option>
-                                        <option value="0414">0414</option>
                                         <option value="0416">0416</option>
                                         <option value="0422">0422</option>
                                         <option value="0424">0424</option>
