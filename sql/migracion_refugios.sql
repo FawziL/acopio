@@ -1,5 +1,5 @@
 -- Migración: Agregar tablas de refugios + modificar reportes
--- Ejecutar después del schema.sql original
+-- Es seguro ejecutarlo múltiples veces
 
 CREATE TABLE IF NOT EXISTS refugios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,9 +30,44 @@ CREATE TABLE IF NOT EXISTS inventario_refugios (
     KEY idx_inventario_refugio (refugio_id, activo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Modificar reportes: hacer centro_id nullable y agregar refugio_id
-ALTER TABLE reportes
-    MODIFY COLUMN centro_id INT NULL,
-    ADD COLUMN refugio_id INT NULL AFTER centro_id,
-    ADD FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE CASCADE,
-    ADD KEY idx_reportes_refugio (refugio_id, activo);
+CREATE TABLE IF NOT EXISTS sugerencias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL DEFAULT 'Anónimo',
+    email VARCHAR(200),
+    mensaje TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Modificar reportes: centro_id nullable
+ALTER TABLE reportes MODIFY COLUMN centro_id INT NULL;
+
+-- Agregar refugio_id solo si no existe
+SET @col_exists = (SELECT COUNT(*) FROM information_schema.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'reportes' AND COLUMN_NAME = 'refugio_id');
+SET @sql = IF(@col_exists = 0,
+    'ALTER TABLE reportes ADD COLUMN refugio_id INT NULL AFTER centro_id',
+    'SELECT ''refugio_id ya existe''');
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Agregar índice si no existe
+SET @idx_exists = (SELECT COUNT(*) FROM information_schema.STATISTICS
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'reportes' AND INDEX_NAME = 'idx_reportes_refugio');
+SET @sql2 = IF(@idx_exists = 0,
+    'ALTER TABLE reportes ADD KEY idx_reportes_refugio (refugio_id, activo)',
+    'SELECT ''índice ya existe''');
+PREPARE stmt FROM @sql2;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+-- Agregar FK si no existe
+SET @fk_exists = (SELECT COUNT(*) FROM information_schema.TABLE_CONSTRAINTS
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'reportes'
+    AND CONSTRAINT_TYPE = 'FOREIGN KEY' AND CONSTRAINT_NAME LIKE '%refugio%');
+SET @sql3 = IF(@fk_exists = 0,
+    'ALTER TABLE reportes ADD CONSTRAINT fk_reportes_refugio FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE CASCADE',
+    'SELECT ''FK ya existe''');
+PREPARE stmt FROM @sql3;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
