@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Si el archivo o directorio existe, servirlo directo
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rutas amigables → archivo .php en views/
+RewriteRule ^centros-acopio$ views/centros-acopio.php [L,QSA]
+RewriteRule ^registrar-centro-acopio$ views/registrar-centro-acopio.php [L,QSA]
+RewriteRule ^centro$ views/centro.php [L,QSA]
+
+# Raíz → index.php
+RewriteRule ^$ index.php [L,QSA]
