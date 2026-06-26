@@ -814,18 +814,52 @@ INSERT INTO parroquias (municipio_id, nombre) VALUES
 (332, 'San Isidro'),
 (332, 'Venancio Pulgar');
 
+-- ===== REFUGIOS =====
+
+CREATE TABLE refugios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    estado_id INT NOT NULL,
+    municipio_id INT NOT NULL,
+    parroquia_id INT NULL,
+    direccion TEXT NOT NULL,
+    direccion_hash CHAR(40) UNIQUE NOT NULL,
+    foto_url VARCHAR(500),
+    telefono VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (estado_id) REFERENCES estados(id),
+    FOREIGN KEY (municipio_id) REFERENCES municipios(id),
+    FOREIGN KEY (parroquia_id) REFERENCES parroquias(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE inventario_refugios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    refugio_id INT NOT NULL,
+    item VARCHAR(200) NOT NULL,
+    tipo ENUM('falta', 'sobra') NOT NULL,
+    cantidad VARCHAR(100) NOT NULL DEFAULT '',
+    activo TINYINT(1) DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE CASCADE,
+    KEY idx_inventario_refugio (refugio_id, activo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- ===== REPORTES / AUDITORÍA COMUNITARIA =====
 
 CREATE TABLE reportes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    centro_id INT NOT NULL,
+    centro_id INT NULL,
+    refugio_id INT NULL,
     nombre_anonimo VARCHAR(100) NOT NULL DEFAULT 'Anónimo',
     tipo_reporte ENUM('valida', 'alerta', 'denuncia', 'comentario') NOT NULL DEFAULT 'comentario',
     mensaje TEXT NOT NULL,
     activo TINYINT(1) DEFAULT 1,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (centro_id) REFERENCES centros(id) ON DELETE CASCADE,
-    KEY idx_reportes_centro (centro_id, activo)
+    FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE CASCADE,
+    KEY idx_reportes_centro (centro_id, activo),
+    KEY idx_reportes_refugio (refugio_id, activo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE reportes_denuncias (

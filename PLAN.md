@@ -208,3 +208,94 @@ CREATE TABLE inventario (
 9. `crear-paso2.php` — Formulario + Turnstile + validación hash
 10. `centro.php` — Detalle + tabla inventario editable
 11. `api/upload.php` — Subida de fotos a /uploads/
+
+---
+
+## Refugios (Ampliación)
+
+Se añade una nueva entidad **refugios** (albergues para personas desplazadas) con la misma lógica base que los centros de acopio, pero con tablas separadas para mantener la independencia de datos.
+
+### Estructura Nuevas Tablas
+
+```sql
+CREATE TABLE refugios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    estado_id INT NOT NULL,
+    municipio_id INT NOT NULL,
+    parroquia_id INT NULL,
+    direccion TEXT NOT NULL,
+    direccion_hash CHAR(40) UNIQUE NOT NULL,
+    foto_url VARCHAR(500),
+    telefono VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (estado_id) REFERENCES estados(id),
+    FOREIGN KEY (municipio_id) REFERENCES municipios(id),
+    FOREIGN KEY (parroquia_id) REFERENCES parroquias(id)
+);
+
+CREATE TABLE inventario_refugios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    refugio_id INT NOT NULL,
+    item VARCHAR(200) NOT NULL,
+    tipo ENUM('falta', 'sobra') NOT NULL,
+    cantidad VARCHAR(100) NOT NULL DEFAULT '',
+    activo TINYINT(1) DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE CASCADE,
+    KEY idx_inventario_refugio (refugio_id, activo)
+);
+```
+
+La tabla `reportes` se modifica para que `centro_id` sea nullable y se agrega `refugio_id` nullable, permitiendo que tanto centros como refugios compartan el mismo sistema de reportes comunitarios.
+
+### Archivos Nuevos
+
+| Archivo | Propósito |
+|---|---|
+| `api/refugios.php` | CRUD refugios (GET listar/detalle, POST crear) |
+| `api/inventario-refugios.php` | CRUD inventario de refugios (GET, POST, DELETE soft) |
+| `api/buscar-refugios.php` | Búsqueda de refugios por estado/municipio |
+| `views/refugios.php` | Listado de refugios con filtros y paginación |
+| `views/registrar-refugio.php` | Formulario de registro de refugio |
+| `views/refugio.php` | Detalle del refugio + inventario + reportes |
+
+### Archivos Modificados
+
+| Archivo | Cambio |
+|---|---|
+| `sql/schema.sql` | Nuevas tablas + modificar `reportes` |
+| `router.php` | Rutas amigables para refugios |
+| `.htaccess` | Rewrite rules para refugios |
+| `index.php` | Navegación a la sección refugios |
+| `api/reportes.php` | Soporte para `refugio_id` |
+| `assets/js/app.js` | Funciones JS para formularios de refugios |
+
+### API - Refugios
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `/api/refugios.php` | Listar refugios (paginado, con filtros) |
+| GET | `/api/refugios.php?id=X` | Detalle de refugio |
+| POST | `/api/refugios.php` | Crear refugio (Turnstile) |
+| GET | `/api/buscar-refugios.php?estado_id=X&municipio_id=Y` | Buscar existentes |
+| GET | `/api/inventario-refugios.php?refugio_id=X` | Listar ítems activos |
+| POST | `/api/inventario-refugios.php` | Agregar ítem (Turnstile) |
+| DELETE | `/api/inventario-refugios.php?id=X` | Soft delete ítem (Turnstile) |
+
+### Rutas Amigables
+
+| Ruta | Archivo |
+|---|---|
+| `/refugios` | `views/refugios.php` |
+| `/registrar-refugio` | `views/registrar-refugio.php` |
+| `/refugio/{id}` | `views/refugio.php?id=X` |
+
+### Flujo de Reportes Compartidos
+
+La tabla `reportes` ahora acepta `centro_id` o `refugio_id` (uno de los dos obligatorio):
+
+- Si `centro_id` está presente → reporte asociado a un centro de acopio
+- Si `refugio_id` está presente → reporte asociado a un refugio
+- La tabla `reportes_denuncias` se mantiene igual (FK a `reportes.id`)

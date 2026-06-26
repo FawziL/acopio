@@ -34,6 +34,13 @@ if (preg_match('#^/centro-acopio/(\d+)$#', $uri, $m)) {
     return true;
 }
 
+// Ruta amigable: /refugio/{id}
+if (preg_match('#^/refugio/(\d+)$#', $uri, $m)) {
+    $_GET['id'] = (int)$m[1];
+    require __DIR__ . '/views/refugio.php';
+    return true;
+}
+
 // 404
 http_response_code(404);
 echo 'Not found: ' . htmlspecialchars($uri);

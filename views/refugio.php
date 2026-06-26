@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Acopio - Detalle</title>
+    <title>Refugio - Detalle</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -12,8 +12,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/centros-acopio">
-                <i class="bi bi-house-heart-fill"></i> Centros de Acopio
+            <a class="navbar-brand fw-bold" href="/refugios">
+                <i class="bi bi-house-heart-fill"></i> Refugios
             </a>
         </div>
     </nav>
@@ -21,33 +21,33 @@
     <?php
     $id = (int)($_GET['id'] ?? 0);
     if (!$id) {
-        echo '<div class="container py-5"><div class="alert alert-danger">ID de centro no valido.</div></div>';
+        echo '<div class="container py-5"><div class="alert alert-danger">ID de refugio no valido.</div></div>';
         exit;
     }
 
     $stmt = $pdo->prepare("
-        SELECT c.*, e.nombre AS estado, m.nombre AS municipio, p.nombre AS parroquia
-        FROM centros c
-        JOIN estados e ON e.id = c.estado_id
-        JOIN municipios m ON m.id = c.municipio_id
-        LEFT JOIN parroquias p ON p.id = c.parroquia_id
-        WHERE c.id = :id
+        SELECT r.*, e.nombre AS estado, m.nombre AS municipio, p.nombre AS parroquia
+        FROM refugios r
+        JOIN estados e ON e.id = r.estado_id
+        JOIN municipios m ON m.id = r.municipio_id
+        LEFT JOIN parroquias p ON p.id = r.parroquia_id
+        WHERE r.id = :id
     ");
     $stmt->execute([':id' => $id]);
-    $centro = $stmt->fetch();
+    $refugio = $stmt->fetch();
 
-    if (!$centro) {
-        echo '<div class="container py-5"><div class="alert alert-danger">Centro no encontrado.</div></div>';
+    if (!$refugio) {
+        echo '<div class="container py-5"><div class="alert alert-danger">Refugio no encontrado.</div></div>';
         exit;
     }
 
     $stmtInv = $pdo->prepare("
         SELECT id, item, tipo, cantidad, updated_at
-        FROM inventario
-        WHERE centro_id = :centro_id AND activo = 1
+        FROM inventario_refugios
+        WHERE refugio_id = :refugio_id AND activo = 1
         ORDER BY tipo, item
     ");
-    $stmtInv->execute([':centro_id' => $id]);
+    $stmtInv->execute([':refugio_id' => $id]);
     $items = $stmtInv->fetchAll();
 
     $falta = array_filter($items, fn($i) => $i['tipo'] === 'falta');
@@ -55,53 +55,53 @@
     ?>
 
     <div class="container py-4">
-        <a href="/centros-acopio" class="btn btn-outline-secondary btn-sm mb-3">
+        <a href="/refugios" class="btn btn-outline-secondary btn-sm mb-3">
             <i class="bi bi-arrow-left"></i> Volver al listado
         </a>
 
         <div class="row">
             <div class="col-12 col-lg-5 mb-4">
                 <div class="card shadow-sm">
-                    <?php if ($centro['foto_url']): ?>
-                        <img src="<?= htmlspecialchars($centro['foto_url']) ?>"
-                             class="card-img-top" alt="Foto del centro"
+                    <?php if ($refugio['foto_url']): ?>
+                        <img src="<?= htmlspecialchars($refugio['foto_url']) ?>"
+                             class="card-img-top" alt="Foto del refugio"
                              style="max-height: 300px; object-fit: cover;"
                              onerror="this.style.display='none'">
                     <?php endif; ?>
                     <div class="card-body">
-                        <h3 class="h5 card-title">Centro de Acopio</h3>
+                        <h3 class="h5 card-title">Refugio</h3>
                         <table class="table table-sm table-borderless mb-0">
                             <tr>
                                 <th class="ps-0" style="width:100px;">Estado</th>
-                                <td><span class="badge bg-danger bg-opacity-10 text-danger"><?= htmlspecialchars($centro['estado']) ?></span></td>
+                                <td><span class="badge bg-danger bg-opacity-10 text-danger"><?= htmlspecialchars($refugio['estado']) ?></span></td>
                             </tr>
                             <tr>
                                 <th class="ps-0">Municipio</th>
-                                <td><?= htmlspecialchars($centro['municipio']) ?></td>
+                                <td><?= htmlspecialchars($refugio['municipio']) ?></td>
                             </tr>
-                            <?php if ($centro['parroquia']): ?>
+                            <?php if ($refugio['parroquia']): ?>
                             <tr>
                                 <th class="ps-0">Parroquia</th>
-                                <td><?= htmlspecialchars($centro['parroquia']) ?></td>
+                                <td><?= htmlspecialchars($refugio['parroquia']) ?></td>
                             </tr>
                             <?php endif; ?>
                             <tr>
                                 <th class="ps-0">Direccion</th>
-                                <td><?= nl2br(htmlspecialchars($centro['direccion'])) ?></td>
+                                <td><?= nl2br(htmlspecialchars($refugio['direccion'])) ?></td>
                             </tr>
-                            <?php if ($centro['telefono']): ?>
+                            <?php if ($refugio['telefono']): ?>
                             <tr>
                                 <th class="ps-0">Telefono</th>
                                 <td>
-                                    <a href="tel:<?= htmlspecialchars($centro['telefono']) ?>" class="text-decoration-none">
-                                        <?= htmlspecialchars($centro['telefono']) ?>
+                                    <a href="tel:<?= htmlspecialchars($refugio['telefono']) ?>" class="text-decoration-none">
+                                        <?= htmlspecialchars($refugio['telefono']) ?>
                                     </a>
                                 </td>
                             </tr>
                             <?php endif; ?>
                             <tr>
                                 <th class="ps-0">Registrado</th>
-                                <td><small class="text-muted"><?= htmlspecialchars($centro['created_at']) ?></small></td>
+                                <td><small class="text-muted"><?= htmlspecialchars($refugio['created_at']) ?></small></td>
                             </tr>
                         </table>
                     </div>
@@ -182,8 +182,8 @@
                         <i class="bi bi-plus-circle"></i> Agregar articulo
                     </div>
                     <div class="card-body">
-                        <form id="form-agregar-item" data-api="/api/inventario.php">
-                            <input type="hidden" name="centro_id" value="<?= $id ?>">
+                        <form id="form-agregar-item" data-api="/api/inventario-refugios.php">
+                            <input type="hidden" name="refugio_id" value="<?= $id ?>">
                             <div class="row g-2">
                                 <div class="col-12 col-md-4">
                                     <select name="tipo" class="form-select" required>
@@ -300,10 +300,10 @@
             SELECT r.id, r.nombre_anonimo, r.tipo_reporte, r.mensaje, r.created_at,
                    (SELECT COUNT(*) FROM reportes_denuncias WHERE reporte_id = r.id) AS denuncias
             FROM reportes r
-            WHERE r.centro_id = :centro_id AND r.activo = 1
+            WHERE r.refugio_id = :refugio_id AND r.activo = 1
             ORDER BY r.created_at DESC LIMIT 50
         ");
-        $stmtRep->execute([':centro_id' => $id]);
+        $stmtRep->execute([':refugio_id' => $id]);
         $reportes = $stmtRep->fetchAll();
         ?>
 
@@ -325,7 +325,7 @@
                     </div>
                     <div class="card-body">
                         <form id="form-reporte">
-                            <input type="hidden" name="centro_id" value="<?= $id ?>">
+                            <input type="hidden" name="refugio_id" value="<?= $id ?>">
                             <div class="mb-3">
                                 <label class="form-label">Categoria</label>
                                 <div class="d-flex gap-2 flex-wrap">
@@ -366,7 +366,7 @@
                             <div class="mb-3">
                                 <label for="reporte-mensaje" class="form-label">Mensaje</label>
                                 <textarea name="mensaje" id="reporte-mensaje" class="form-control" rows="3"
-                                          placeholder="Ej: Si estan recibiendo, yo acabo de dejar agua"
+                                          placeholder="Ej: El refugio esta lleno, no estan recibiendo mas personas"
                                           maxlength="2000" required></textarea>
                             </div>
                             <div class="mb-3">
@@ -387,7 +387,7 @@
                 <?php if (count($reportes) === 0): ?>
                     <div class="text-center py-5 text-muted">
                         <i class="bi bi-chat-square-text display-4"></i>
-                        <p class="mt-2">No hay reportes aun. Se el primero en verificar este centro.</p>
+                        <p class="mt-2">No hay reportes aun. Se el primero en verificar este refugio.</p>
                     </div>
                 <?php else: ?>
                     <div class="list-group">
@@ -437,7 +437,7 @@
     <footer class="bg-light py-3 mt-4">
         <div class="container text-center text-muted small">
             <i class="bi bi-house-heart-fill text-danger"></i>
-            Centros de Acopio &mdash; Terremoto Venezuela
+            Refugios &mdash;
         </div>
     </footer>
 
@@ -473,7 +473,7 @@
                     cancelButtonText: 'Cancelar',
                 }).then(function (result) {
                     if (!result.isConfirmed) return;
-                    fetch('/api/inventario.php', {
+                    fetch('/api/inventario-refugios.php', {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ id: itemId, turnstile_token: token })

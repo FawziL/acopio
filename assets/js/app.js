@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- Inventario: agregar item ---
+    // --- Inventario: agregar item (centros y refugios) ---
     const formItem = document.getElementById('form-agregar-item');
     if (formItem) {
         formItem.addEventListener('submit', function (e) {
@@ -152,7 +152,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             data.turnstile_token = token;
 
-            fetch('/api/inventario.php', {
+            const apiUrl = this.dataset.api || '/api/inventario.php';
+
+            fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

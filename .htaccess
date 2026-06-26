@@ -8,6 +8,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^centros-acopio$ views/centros-acopio.php [L,QSA]
 RewriteRule ^registrar-centro-acopio$ views/registrar-centro-acopio.php [L,QSA]
 RewriteRule ^centro$ views/centro.php [L,QSA]
+RewriteRule ^refugios$ views/refugios.php [L,QSA]
+RewriteRule ^registrar-refugio$ views/registrar-refugio.php [L,QSA]
+RewriteRule ^refugio$ views/refugio.php [L,QSA]
 
 # Raíz → index.php
 RewriteRule ^$ index.php [L,QSA]
