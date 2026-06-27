@@ -49,7 +49,12 @@
             </div>
 
             <section class="av-section">
-                <h2 class="h3 text-center mb-4">Portales</h2>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h3 mb-0">Portales</h2>
+                    <a href="/portales" class="btn btn-av-outline-blue btn-sm">
+                        Ver más <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
                 <div class="row g-4">
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card shadow-sm h-100 border-av-red">
