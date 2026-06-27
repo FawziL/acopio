@@ -87,9 +87,6 @@
                         <div id="collapseApoyo" class="accordion-collapse collapse">
                             <div class="accordion-body">
                                 <p class="text-muted small mb-3">Líneas de atención y recursos de apoyo emocional para damnificados.</p>
-                                <a href="#" class="btn btn-av-outline-green" target="_blank" rel="noopener">
-                                    <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                                </a>
                             </div>
                         </div>
                     </div>
