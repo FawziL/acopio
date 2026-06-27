@@ -70,6 +70,11 @@
           ¿Encontraste un problema en el sitio? Escríbenos a 
           <a href="mailto:contacto@apoyavenezuela.com" class="av-footer-email">contacto@apoyavenezuela.com</a>
         </p>
+        <p class="av-footer-text mt-2">
+          <a href="/portales" class="av-footer-email me-3"><i class="bi bi-globe2"></i> Portales</a>
+          <a href="/voluntarios" class="av-footer-email me-3"><i class="bi bi-people"></i> Voluntarios</a>
+          <a href="/sugerencias" class="av-footer-email"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+        </p>
       </div>
       <a href="/registrar" class="av-footer-cta">
         <i class="bi bi-plus-circle"></i>
