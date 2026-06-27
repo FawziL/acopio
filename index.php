@@ -51,27 +51,27 @@
             <section class="av-section">
                 <h2 class="h3 text-center mb-4">Portales</h2>
                 <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-box-seam display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Centros de Acopio</h3>
-                                <p class="text-muted">
-                                    Puntos de recolección de donaciones. Consulta qué falta y qué sobra en cada centro.
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow-sm h-100 border-av-red">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-house-heart-fill display-3 text-av-red"></i>
+                                <h5 class="card-title mt-3">Refugios</h5>
+                                <p class="card-text small text-muted">
+                                    Albergues y refugios disponibles para personas damnificadas. Reporta y consulta información.
                                 </p>
-                                <a href="/centros-acopio" class="btn btn-danger">
-                                    <i class="bi bi-box-seam"></i> Ver centros de acopio
+                                <a href="/refugios" class="btn btn-av-red mt-auto">
+                                    <i class="bi bi-house-heart"></i> Ver refugios
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-house-heart-fill display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Refugios</h3>
-                                <p class="text-muted">
-                                    Albergues y refugios disponibles para personas damnificadas. Reporta y consulta información.
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow-sm h-100 border-av-blue">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-box-seam display-3 text-av-blue"></i>
+                                <h5 class="card-title mt-3">Centros de Acopio</h5>
+                                <p class="card-text small text-muted">
+                                    Puntos de recolección de donaciones. Consulta qué falta y qué sobra en cada centro.
                                 </p>
                                 <a href="/centros-acopio" class="btn btn-av-blue mt-auto">
                                     <i class="bi bi-box-seam"></i> Ver centros
@@ -79,12 +79,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-people-fill display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Voluntarios</h3>
-                                <p class="text-muted">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow-sm h-100 border-av-yellow">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-people-fill display-3 text-av-yellow"></i>
+                                <h5 class="card-title mt-3">Voluntarios</h5>
+                                <p class="card-text small text-muted">
                                     Ofrece tu tiempo y habilidades. No es una donación, es tu ayuda directa como voluntario.
                                 </p>
                                 <a href="/voluntarios/lista" class="btn btn-av-yellow mt-auto">
