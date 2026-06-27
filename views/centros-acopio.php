@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-<<<<<<< HEAD
-    <?php $activeNav = 'centros'; ?>
-    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
-=======
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/">
@@ -47,7 +43,6 @@
             </div>
         </div>
     </nav>
->>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
 
     <main class="av-main">
         <div class="container py-4">
