@@ -60,22 +60,7 @@
                             <div class="accordion-body">
                                 <p class="text-muted small mb-3">Hospitales, ambulatorios y puntos de atención médica habilitados.</p>
                                 <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        <span class="small">Desaparecidos Terremoto Venezuela</span>
-                                        <a href="https://desaparecidosterremotovenezuela.com/" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
-                                            <i class="bi bi-box-arrow-up-right"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        <span class="small">Venezuela te busca</span>
-                                        <a href="https://venezuelatebusca.com/" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
-                                            <i class="bi bi-box-arrow-up-right"></i>
-                                        </a>
-                                    </li>
                                 </ul>
-                                <a href="#" class="btn btn-av-outline-red" target="_blank" rel="noopener">
-                                    <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -89,9 +74,6 @@
                         <div id="collapseInfo" class="accordion-collapse collapse">
                             <div class="accordion-body">
                                 <p class="text-muted small mb-3">Comunicados oficiales del gobierno y Protección Civil.</p>
-                                <a href="#" class="btn btn-av-outline-blue" target="_blank" rel="noopener">
-                                    <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                                </a>
                             </div>
                         </div>
                     </div>
