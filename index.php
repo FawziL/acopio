@@ -16,106 +16,83 @@
 
     <main class="av-main">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Apoya Venezuela
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/damnificados/lista"><i class="bi bi-people"></i> Damnificados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-                    </li>
-                </ul>
+            <div class="row">
+                <div class="col-10">
+
+                    <h1 class="display-5 fw-bold mb-1">
+                        <span class="text-av-yellow">Apoya</span> <span class="text-av-blue">a</span> <span class="text-av-red">Venezuela</span>
+                    </h1>
+                    <hr class="hero-stripe w-50 mb-4">
+                    <h2 class="h4 text-start text-muted mb-2" style="max-width: 50ch;">
+                        La organización de la información también es apoyar.
+                    </h2>
+                    <p class="text-muted small mt-4" style="max-width: 55ch;">
+                        Plataforma ciudadana para conectar centros de acopio y refugios durante la emergencia en Venezuela. No solicitamos ni gestionamos dinero, donaciones ni ayudas de ningún tipo. Nuestro único objetivo es facilitar la recopilación y organización de información que pueda contribuir a la ayuda humanitaria.
+                    </p>
+                    <a href="/registrar" class="btn btn-av-blue btn-lg mb-2">
+                        <i class="bi bi-plus-circle"></i> Registrar centro de acopio o refugio
+                    </a>
+                    <div class="mt-3">
+                        <p class="text-muted small mb-2">¿No sabes cómo apoyar? <strong>Difunde</strong></p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="https://wa.me/?text=Plataforma%20de%20ayuda%20para%20la%20emergencia%20en%20Venezuela%3A%20Centros%20de%20Acopio%2C%20Refugios%20y%20m%C3%A1s%20%E2%80%94%20https%3A%2F%2Fapoyavenezuela.com"
+                               class="btn btn-av-green btn-sm" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i> WhatsApp
+                            </a>
+                            <button type="button" class="btn btn-av-outline-yellow btn-sm" id="btn-difundir">
+                                <i class="bi bi-share"></i> Copiar enlace
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <section class="av-section">
-                <h2 class="h3 text-center mb-4">Portales</h2>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h3 mb-0">Portales</h2>
+                    <a href="/portales" class="btn btn-av-outline-blue btn-sm">
+                        Ver más <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
                 <div class="row g-4">
                     <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-box-seam display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Centros de Acopio</h3>
-                                <p class="text-muted">
+                        <div class="card shadow-sm h-100 border-av-red">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-house-heart-fill display-3 text-av-red"></i>
+                                <h5 class="card-title mt-3">Refugios</h5>
+                                <p class="card-text small text-muted">
+                                    Albergues y refugios disponibles para personas damnificadas. Reporta y consulta información.
+                                </p>
+                                <a href="/refugios" class="btn btn-av-red mt-auto">
+                                    <i class="bi bi-house-heart"></i> Ver refugios
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow-sm h-100 border-av-blue">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-box-seam display-3 text-av-blue"></i>
+                                <h5 class="card-title mt-3">Centros de Acopio</h5>
+                                <p class="card-text small text-muted">
                                     Puntos de recolección de donaciones. Consulta qué falta y qué sobra en cada centro.
                                 </p>
-                                <a href="/centros-acopio" class="btn btn-danger">
+                                <a href="/centros-acopio" class="btn btn-av-blue mt-auto">
                                     <i class="bi bi-box-seam"></i> Ver centros
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-house-heart-fill display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Refugios</h3>
-                                <p class="text-muted">
-                                    Albergues y refugios disponibles para personas damnificadas.
+                        <div class="card shadow-sm h-100 border-av-yellow">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-people-fill display-3 text-av-yellow"></i>
+                                <h5 class="card-title mt-3">Voluntarios</h5>
+                                <p class="card-text small text-muted">
+                                    Ofrece tu tiempo y habilidades. No es una donación, es tu ayuda directa como voluntario.
                                 </p>
-                                <a href="/refugios" class="btn btn-danger">
-                                    <i class="bi bi-box-seam"></i> Ver refugios
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-exclamation-triangle display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Averías</h3>
-                                <p class="text-muted">
-                                    Reporta inmuebles afectados para coordinar evaluaciones.
-                                </p>
-                                <a href="/averias/lista" class="btn btn-danger">
-                                    <i class="bi bi-exclamation-triangle"></i> Ver averías
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-people display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Damnificados</h3>
-                                <p class="text-muted">
-                                    Registro de personas afectadas para coordinar asistencia.
-                                </p>
-                                <a href="/damnificados/lista" class="btn btn-danger">
-                                    <i class="bi bi-people"></i> Ver damnificados
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-body text-center py-5">
-                                <i class="bi bi-people-fill display-1 text-danger"></i>
-                                <h3 class="h4 mt-3">Voluntarios</h3>
-                                <p class="text-muted">
-                                    Ofrece tu tiempo y habilidades como voluntario.
-                                </p>
-                                <a href="/voluntarios/lista" class="btn btn-danger">
+                                <a href="/voluntarios/lista" class="btn btn-av-yellow mt-auto">
                                     <i class="bi bi-people-fill"></i> Ser voluntario
                                 </a>
                             </div>
@@ -146,12 +123,6 @@
                     </button>
                     <button class="av-tab" data-tab="refugios">
                         <i class="bi bi-house-heart"></i> Refugios
-                    </button>
-                    <button class="av-tab" data-tab="averias">
-                        <i class="bi bi-exclamation-triangle"></i> Averías
-                    </button>
-                    <button class="av-tab" data-tab="damnificados">
-                        <i class="bi bi-people"></i> Damnificados
                     </button>
                 </div>
 
@@ -346,130 +317,6 @@
                         <div class="text-center mt-4">
                             <a href="/refugios" class="btn btn-av-red">
                                 <i class="bi bi-arrow-right"></i> Ver todos los refugios
-                            </a>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="av-tab-panel" id="panel-averias">
-                    <?php
-                    $stmt = $pdo->query("
-                        SELECT a.id, a.nombre, a.referencia, a.foto_url, a.estado, a.created_at,
-                               e.nombre AS estado_nombre, m.nombre AS municipio
-                        FROM averias a
-                        JOIN estados e ON e.id = a.estado_id
-                        JOIN municipios m ON m.id = a.municipio_id
-                        ORDER BY a.created_at DESC
-                        LIMIT 6
-                    ");
-                    $averias = $stmt->fetchAll();
-                    ?>
-                    <?php if (empty($averias)): ?>
-                        <div class="text-center py-5">
-                            <i class="bi bi-inbox display-1 text-muted"></i>
-                            <p class="mt-3 text-muted">No hay averías reportadas aún.</p>
-                        </div>
-                    <?php else: ?>
-                        <div class="row g-3">
-                            <?php foreach ($averias as $a):
-                                $badgeClass = match ($a['estado']) {
-                                    'reportado'  => 'bg-secondary',
-                                    'verificado' => 'bg-success',
-                                    'en_proceso' => 'bg-warning text-dark',
-                                    'resuelto'   => 'bg-info text-dark',
-                                    default      => 'bg-secondary',
-                                };
-                                $estadoLabel = match ($a['estado']) {
-                                    'reportado'  => 'Reportado',
-                                    'verificado' => 'Verificado',
-                                    'en_proceso' => 'En proceso',
-                                    'resuelto'   => 'Resuelto',
-                                    default      => $a['estado'],
-                                };
-                            ?>
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <a href="/averia/<?= $a['id'] ?>" class="text-decoration-none">
-                                        <div class="card h-100 shadow-sm border-danger">
-                                            <?php if ($a['foto_url']): ?>
-                                                <img src="<?= htmlspecialchars($a['foto_url']) ?>" class="card-img-top" alt="Foto" style="height:180px;object-fit:cover;" onerror="this.style.display='none'">
-                                            <?php endif; ?>
-                                            <div class="card-body">
-                                                <h6 class="card-title text-danger"><?= htmlspecialchars($a['nombre']) ?></h6>
-                                                <p class="card-text small text-muted mb-1">
-                                                    <i class="bi bi-geo-alt"></i> <?= htmlspecialchars($a['estado_nombre']) ?> &middot; <?= htmlspecialchars($a['municipio']) ?>
-                                                </p>
-                                                <p class="card-text small mb-1">
-                                                    <span class="badge <?= $badgeClass ?>"><?= $estadoLabel ?></span>
-                                                </p>
-                                                <p class="card-text small text-muted mb-0">
-                                                    <i class="bi bi-clock"></i> <?= htmlspecialchars($a['created_at']) ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="text-center mt-4">
-                            <a href="/averias/lista" class="btn btn-av-red">
-                                <i class="bi bi-arrow-right"></i> Ver todas las averías
-                            </a>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <div class="av-tab-panel" id="panel-damnificados">
-                    <?php
-                    $stmt = $pdo->query("
-                        SELECT id, nombre, cedula, edad, telefono, ubicacion, foto_url, created_at
-                        FROM damnificados
-                        ORDER BY created_at DESC
-                        LIMIT 6
-                    ");
-                    $damnificados = $stmt->fetchAll();
-                    ?>
-                    <?php if (empty($damnificados)): ?>
-                        <div class="text-center py-5">
-                            <i class="bi bi-inbox display-1 text-muted"></i>
-                            <p class="mt-3 text-muted">No hay damnificados registrados aún.</p>
-                        </div>
-                    <?php else: ?>
-                        <div class="row g-3">
-                            <?php foreach ($damnificados as $d):
-                                $partes = explode(' ', trim($d['nombre']));
-                                $iniciales = mb_strtoupper(mb_substr($partes[0], 0, 1));
-                                if (count($partes) > 1) {
-                                    $iniciales .= mb_strtoupper(mb_substr(end($partes), 0, 1));
-                                }
-                            ?>
-                                <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                                    <div class="card shadow-sm h-100 border-danger">
-                                        <?php if ($d['foto_url']): ?>
-                                            <img src="<?= htmlspecialchars($d['foto_url']) ?>" class="card-img-top" alt="Foto" style="height:160px;object-fit:cover;" onerror="this.style.display='none'">
-                                        <?php else: ?>
-                                            <div class="d-flex align-items-center justify-content-center bg-danger bg-opacity-10" style="height:160px;">
-                                                <span class="display-4 fw-bold text-danger"><?= htmlspecialchars($iniciales) ?></span>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="card-body">
-                                            <h6 class="card-title text-danger mb-1"><?= htmlspecialchars($d['nombre']) ?></h6>
-                                            <p class="card-text small text-muted mb-1">
-                                                <i class="bi bi-credit-card"></i> V-<?= htmlspecialchars($d['cedula']) ?> &middot; <?= (int)$d['edad'] ?> años
-                                            </p>
-                                            <?php if ($d['telefono']): ?>
-                                                <p class="card-text small text-muted mb-1"><i class="bi bi-telephone"></i> <?= htmlspecialchars($d['telefono']) ?></p>
-                                            <?php endif; ?>
-                                            <?php if ($d['ubicacion']): ?>
-                                                <p class="card-text small text-muted mb-0"><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($d['ubicacion']) ?></p>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="text-center mt-4">
-                            <a href="/damnificados/lista" class="btn btn-av-red">
-                                <i class="bi bi-arrow-right"></i> Ver todos los damnificados
                             </a>
                         </div>
                     <?php endif; ?>

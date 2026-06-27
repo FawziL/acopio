@@ -127,52 +127,60 @@
                     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
                 ?>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <a href="/refugio/<?= $refugio['id'] ?>" class="text-decoration-none">
-                            <div class="card h-100 shadow-sm border-danger">
-                                <?php if ($refugio['foto_url']): ?>
-                                    <img src="<?= htmlspecialchars($refugio['foto_url']) ?>"
-                                         class="card-img-top" alt="Foto del refugio"
-                                         style="height: 180px; object-fit: cover;"
-                                         onerror="this.style.display='none'">
-                                <?php endif; ?>
-                                <div class="card-body">
-                                    <h5 class="card-title text-danger"><?= htmlspecialchars($refugio['direccion'] ? mb_substr($refugio['direccion'], 0, 60) : 'Refugio #' . $refugio['id']) ?></h5>
-                                    <p class="card-text small text-muted mb-1">
-                                        <i class="bi bi-geo-alt"></i>
-                                        <?= htmlspecialchars($refugio['estado']) ?> &middot; <?= htmlspecialchars($refugio['municipio']) ?>
-                                    </p>
-                                    <?php if ($refugio['telefono']): ?>
-                                        <p class="card-text small text-muted mb-1">
-                                            <i class="bi bi-telephone"></i> <?= htmlspecialchars($refugio['telefono']) ?>
-                                        </p>
-                                    <?php endif; ?>
+                        <div class="card h-100 shadow-sm">
+                            <?php if ($refugio['foto_url']): ?>
+                                <img src="<?= htmlspecialchars($refugio['foto_url']) ?>"
+                                     class="card-img-top" alt="Foto del refugio"
+                                     style="height: 180px; object-fit: cover;"
+                                     onerror="this.style.display='none'">
+                            <?php endif; ?>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <span class="badge badge-av-blue-light me-1">
+                                        <?= htmlspecialchars($refugio['estado']) ?>
+                                    </span>
+                                    <span class="badge bg-secondary"><?= htmlspecialchars($refugio['municipio']) ?></span>
+                                </h5>
+                                <p class="card-text small mb-1">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <?= htmlspecialchars(mb_substr($refugio['direccion'], 0, 80)) ?>
+                                    <?= mb_strlen($refugio['direccion']) > 80 ? '...' : '' ?>
+                                </p>
+                                <?php if ($refugio['telefono']): ?>
                                     <p class="card-text small mb-1">
-                                        <?php if (count($falta) > 0): ?>
-                                            <span class="text-danger fw-semibold">❌ Falta:</span>
-                                            <?php foreach (array_slice($falta, 0, 3) as $item): ?>
-                                                <span class="badge bg-danger bg-opacity-10 text-danger me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                            <?php endforeach; ?>
-                                            <?php if (count($falta) > 3): ?>
-                                                <span class="text-muted small">+<?= count($falta) - 3 ?></span>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                        <?php if (count($sobra) > 0): ?>
-                                            <br>
-                                            <span class="text-success fw-semibold">✅ Sobra:</span>
-                                            <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
-                                                <span class="badge bg-success bg-opacity-10 text-success me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                            <?php endforeach; ?>
-                                            <?php if (count($sobra) > 3): ?>
-                                                <span class="text-muted small">+<?= count($sobra) - 3 ?></span>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
+                                        <i class="bi bi-telephone"></i>
+                                        <a href="tel:<?= htmlspecialchars($refugio['telefono']) ?>"><?= htmlspecialchars($refugio['telefono']) ?></a>
                                     </p>
-                                    <p class="card-text small text-muted mb-0">
-                                        <i class="bi bi-clock"></i> <?= htmlspecialchars($refugio['created_at']) ?>
-                                    </p>
+                                <?php endif; ?>
+                                <div class="mt-2 small">
+                                    <?php if (count($falta) > 0): ?>
+                                        <span class="text-av-red fw-semibold">❌ Falta:</span>
+                                        <?php foreach (array_slice($falta, 0, 3) as $item): ?>
+                                            <span class="badge badge-av-red-light me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                        <?php endforeach; ?>
+                                        <?php if (count($falta) > 3): ?>
+                                            <span class="text-muted">+<?= count($falta) - 3 ?> más</span>
+                                        <?php endif; ?>
+                                        <br>
+                                    <?php endif; ?>
+                                    <?php if (count($sobra) > 0): ?>
+                                        <span class="text-av-green fw-semibold">✅ Sobra:</span>
+                                        <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
+                                            <span class="badge badge-av-green-light me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                        <?php endforeach; ?>
+                                        <?php if (count($sobra) > 3): ?>
+                                            <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                            <div class="card-footer bg-transparent">
+                                <a href="/refugio/<?= $refugio['id'] ?>" class="btn btn-av-outline-blue btn-sm w-100">
+                                    <i class="bi bi-eye"></i> Ver detalle
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

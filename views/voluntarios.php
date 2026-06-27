@@ -12,8 +12,38 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
-    <?php $activeNav = 'voluntarios'; ?>
-    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-house-heart-fill"></i> Apoya Venezuela
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <main class="av-main">
         <div class="container py-4">
@@ -21,10 +51,10 @@
             <div class="col-12 col-md-8 col-lg-6">
 
                 <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
-                    <a href="javascript:history.back()" class="btn btn-av-outline-blue btn-sm">
+                    <a href="/" class="btn btn-av-outline-blue btn-sm">
                         <i class="bi bi-arrow-left"></i> Volver
                     </a>
-                    <a href="/voluntarios/lista" class="btn btn-av-outline-blue btn-sm">
+                    <a href="/voluntarios/lista" class="btn btn-av-outline-red btn-sm">
                         <i class="bi bi-list-ul"></i> Ver voluntarios registrados
                     </a>
                 </div>
@@ -206,7 +236,7 @@
 
             </div>
         </div>
-    </div>
+        </div>
     </main>
 
     <?php require_once __DIR__ . '/partials/footer.php'; ?>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portales Relevantes - Apoya Venezuela</title>
+    <title>Portales - Apoya Venezuela</title>
     <?php require_once __DIR__ . '/partials/head.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -19,106 +19,105 @@
         <h1 class="h3 mb-1">Portales Relevantes</h1>
         <p class="text-muted mb-4">Recopilación de portales y recursos útiles durante la emergencia.</p>
 
-        <div class="row g-4">
+        <div class="card shadow-sm border-0 flex-grow-1 mb-4">
+            <div class="card-body p-0">
+                <div class="accordion" id="accordionPortales">
 
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body py-4">
-                        <div class="text-center">
-                            <i class="bi bi-people-fill display-3 text-danger"></i>
-                            <h5 class="card-title mt-3">Personas Desaparecidas</h5>
-                            <p class="card-text small text-muted mb-3">Portales para reportar y buscar desaparecidos.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Desaparecidos Terremoto Venezuela</span>
-                                <a href="https://desaparecidosterremotovenezuela.com/" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
-                                    <i class="bi bi-box-arrow-up-right"></i>
-                                </a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Venezuela te busca</span>
-                                <a href="https://venezuelatebusca.com/" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
-                                    <i class="bi bi-box-arrow-up-right"></i>
-                                </a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Info Central Terremoto Venezuela</span>
-                                <a href="https://info-central-terremoto-venezuela.com/index.html" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
-                                    <i class="bi bi-box-arrow-up-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body text-center py-4">
-                        <i class="bi bi-megaphone-fill display-3 text-danger"></i>
-                        <h5 class="card-title mt-3">Voluntariado</h5>
-                        <p class="card-text small text-muted">Regístrate como voluntario o busca grupos de ayuda organizada.</p>
-                        <a href="/voluntarios" class="btn btn-outline-danger" rel="noopener">
-                            <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body text-center py-4">
-                        <i class="bi bi-bandaid-fill display-3 text-danger"></i>
-                        <h5 class="card-title mt-3">Asistencia Médica</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Ambulancia Metropolitano · (0212) 545.45.45 / 545.46.55 / 577.92.09</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Aeroambulancias · (0212) 993.25.41 / 992.89.80 / 992.89.90 / 991.79.40</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Rescarven · (0212) 993.69.11 / 993.69.91 / 993.13.10 / 993.33.67</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4 mt-2">
-            <div class="col-12">
-                <div class="card shadow-sm border-danger text-center">
-                    <div class="card-body py-4">
-                        <i class="bi bi-share-fill display-4 text-danger"></i>
-                        <h4 class="h5 mt-2">¿No sabes cómo colaborar?</h4>
-                        <p class="text-muted mb-2">Comparte y difunde esta página para que la ayuda llegue a más personas.</p>
-                        <div class="d-flex justify-content-center gap-2 flex-wrap">
-                            <a href="https://wa.me/?text=Portales%20%C3%BAtiles%20para%20la%20emergencia%20en%20Venezuela%3A%20https%3A%2F%2Fapoyavenezuela.com%2Fportales"
-                               class="btn btn-success" target="_blank" rel="noopener">
-                                <i class="bi bi-whatsapp"></i> Compartir en WhatsApp
-                            </a>
-                            <button class="btn btn-outline-danger" onclick="navigator.clipboard.writeText('https://apoyavenezuela.com/portales').then(()=>{this.innerHTML='<i class=\'bi bi-check-lg\'></i> Copiado'})">
-                                <i class="bi bi-link-45deg"></i> Copiar enlace
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesaparecidas">
+                                <i class="bi bi-people-fill text-av-red me-2"></i> Personas Desaparecidas
                             </button>
-                        </div>
-                        <div class="mt-2 text-muted small">
-                            <code>https://apoyavenezuela.com/portales</code>
+                        </h2>
+                        <div id="collapseDesaparecidas" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p class="text-muted small mb-3">Portales para reportar y buscar desaparecidos.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        <span class="small">Desaparecidos Terremoto Venezuela</span>
+                                        <a href="https://desaparecidosterremotovenezuela.com/" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
+                                            <i class="bi bi-box-arrow-up-right"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        <span class="small">Venezuela te busca</span>
+                                        <a href="https://venezuelatebusca.com/" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
+                                            <i class="bi bi-box-arrow-up-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="accordion-item border-top">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAsistencia">
+                                <i class="bi bi-bandaid-fill text-av-red me-2"></i> Asistencia Médica
+                            </button>
+                        </h2>
+                        <div id="collapseAsistencia" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p class="text-muted small mb-3">Hospitales, ambulatorios y puntos de atención médica habilitados.</p>
+                                <ul class="list-group list-group-flush mb-3">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-top">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInfo">
+                                <i class="bi bi-info-circle-fill text-av-blue me-2"></i> Información Oficial
+                            </button>
+                        </h2>
+                        <div id="collapseInfo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p class="text-muted small mb-3">Comunicados oficiales del gobierno y Protección Civil.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-top">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApoyo">
+                                <i class="bi bi-heart-pulse-fill text-av-green me-2"></i> Apoyo Psicológico
+                            </button>
+                        </h2>
+                        <div id="collapseApoyo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p class="text-muted small mb-3">Líneas de atención y recursos de apoyo emocional para damnificados.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-top">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVoluntariado">
+                                <i class="bi bi-megaphone-fill text-av-yellow me-2"></i> Voluntariado
+                            </button>
+                        </h2>
+                        <div id="collapseVoluntariado" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p class="text-muted small mb-3">Regístrate como voluntario o busca grupos de ayuda organizada.</p>
+                                <a href="#" class="btn btn-av-outline-yellow" target="_blank" rel="noopener">
+                                    <i class="bi bi-box-arrow-up-right"></i> Ingresar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="alert alert-warning mt-4 mb-0" role="alert">
+        <div class="alert alert-warning mb-0" role="alert">
             <i class="bi bi-pencil-square"></i>
             <strong>¿Conoces algún portal útil?</strong>
             Los enlaces se actualizarán a medida que la comunidad los reporte.
             <a href="/sugerencias" class="alert-link">Envíanos tus sugerencias</a>.
         </div>
-    </div>
-
+        </div>
     </main>
 
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
