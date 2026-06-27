@@ -34,20 +34,14 @@
                                 <p class="text-muted small mb-3">Portales para reportar y buscar desaparecidos.</p>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        <span class="small">desaparecidosterremotovenezuela</span>
+                                        <span class="small">Desaparecidos Terremoto Venezuela</span>
                                         <a href="https://desaparecidosterremotovenezuela.com/" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
                                             <i class="bi bi-box-arrow-up-right"></i>
                                         </a>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        <span class="small">Portal #2</span>
-                                        <a href="#" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
-                                            <i class="bi bi-box-arrow-up-right"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        <span class="small">Portal #3</span>
-                                        <a href="#" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
+                                        <span class="small">Venezuela te busca</span>
+                                        <a href="https://venezuelatebusca.com/" class="btn btn-av-outline-red btn-sm" target="_blank" rel="noopener">
                                             <i class="bi bi-box-arrow-up-right"></i>
                                         </a>
                                     </li>
