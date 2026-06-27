@@ -11,8 +11,38 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <?php $activeNav = 'portales'; ?>
-    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-house-heart-fill"></i> Apoya Venezuela
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <main class="av-main d-flex flex-column">
         <div class="container py-4 flex-grow-1 d-flex flex-column">
@@ -147,7 +177,26 @@
         </div>
     </main>
 
+<<<<<<< HEAD
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
+=======
+    <footer class="bg-light py-3 mt-4">
+        <div class="container text-center text-muted small">
+            <i class="bi bi-house-heart-fill text-danger"></i>
+            Apoya Venezuela &mdash; Portales Relevantes
+            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
+            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+        </div>
+        <div class="container text-center text-muted small mt-2">
+            <strong>Ambulancias Aéreas:</strong><br>
+            <span class="fw-semibold">Aeroambulancias</span> &middot; (0212) 993.25.41 / 992.89.80 / 992.89.90 / 991.79.40<br>
+            <span class="fw-semibold">Rescarven</span> &middot; (0212) 993.69.11 / 993.69.91 / 993.13.10 / 993.33.67<br>
+            <span class="fw-semibold">Ambulancia Metropolitano</span> &middot; (0212) 545.45.45 / 545.46.55 / 577.92.09
+        </div>
+    </footer>
+>>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -11,8 +11,43 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+<<<<<<< HEAD
     <?php $activeNav = 'centros'; ?>
     <?php require_once __DIR__ . '/partials/navbar.php'; ?>
+=======
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-house-heart-fill"></i> Centros de Acopio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+>>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
 
     <main class="av-main">
         <div class="container py-4">
@@ -171,15 +206,32 @@
                                         <?php if (count($sobra) > 3): ?>
                                             <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
                                         <?php endif; ?>
-                                    <?php endif; ?>
+                                        <?php if (count($sobra) > 0): ?>
+                                            <br>
+                                            <span class="text-success fw-semibold">✅ Sobra:</span>
+                                            <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
+                                                <span class="badge bg-success bg-opacity-10 text-success me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                            <?php endforeach; ?>
+                                            <?php if (count($sobra) > 3): ?>
+                                                <span class="text-muted small">+<?= count($sobra) - 3 ?></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </p>
+                                    <p class="card-text small text-muted mb-0">
+                                        <i class="bi bi-clock"></i> <?= htmlspecialchars($centro['created_at']) ?>
+                                    </p>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="card-footer bg-transparent">
                                 <a href="/centro-acopio/<?= $centro['id'] ?>" class="btn btn-av-outline-blue btn-sm w-100">
                                     <i class="bi bi-eye"></i> Ver detalle
                                 </a>
                             </div>
                         </div>
+=======
+                        </a>
+>>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -206,7 +258,23 @@
         </div>
     </main>
 
+<<<<<<< HEAD
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
+=======
+    <footer class="bg-light py-3 mt-4">
+        <div class="container text-center text-muted small">
+            <i class="bi bi-house-heart-fill text-danger"></i>
+            Centros de Acopio &mdash; Apoya Venezuela
+            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
+            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+        </div>
+        <div class="container text-center text-muted small mt-1">
+            Proyecto libre de uso, sin fines de lucro ni monetización. Solo colaboramos por la situación de Venezuela.
+        </div>
+    </footer>
+>>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/app.js"></script>

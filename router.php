@@ -20,14 +20,7 @@ if (is_file($filePath)) {
     return false;
 }
 
-// Mapeo de rutas amigables a archivos PHP en views/
-$phpFile = __DIR__ . '/views' . $uri . '.php';
-if (is_file($phpFile)) {
-    require $phpFile;
-    return true;
-}
-
-// Ruta amigable: /centro-acopio/{id}
+// Ruta amigable: /centro-acopio/{id} (antes del auto-mapper para evitar conflicto)
 if (preg_match('#^/centro-acopio/(\d+)$#', $uri, $m)) {
     $_GET['id'] = (int)$m[1];
     require __DIR__ . '/views/centro.php';
@@ -41,6 +34,20 @@ if (preg_match('#^/refugio/(\d+)$#', $uri, $m)) {
     return true;
 }
 
+// Ruta amigable: /averia/{id}
+if (preg_match('#^/averia/(\d+)$#', $uri, $m)) {
+    $_GET['id'] = (int)$m[1];
+    require __DIR__ . '/views/averia.php';
+    return true;
+}
+
+// Mapeo de rutas amigables a archivos PHP en views/
+$phpFile = __DIR__ . '/views' . $uri . '.php';
+if (is_file($phpFile)) {
+    require $phpFile;
+    return true;
+}
+
 // Ruta: /voluntarios
 if ($uri === '/voluntarios') {
     require __DIR__ . '/views/voluntarios.php';
@@ -50,6 +57,18 @@ if ($uri === '/voluntarios') {
 // Ruta: /voluntarios/lista
 if ($uri === '/voluntarios/lista') {
     require __DIR__ . '/views/voluntarios-lista.php';
+    return true;
+}
+
+// Ruta: /averias (formulario)
+if ($uri === '/averias') {
+    require __DIR__ . '/views/averias.php';
+    return true;
+}
+
+// Ruta: /averias/lista
+if ($uri === '/averias/lista') {
+    require __DIR__ . '/views/averias-lista.php';
     return true;
 }
 
