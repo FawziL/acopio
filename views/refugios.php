@@ -11,38 +11,8 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Refugios
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php $activeNav = 'refugios'; ?>
+    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
 
     <main class="av-main">
         <div class="container py-4">
@@ -157,51 +127,6 @@
                     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
                 ?>
                     <div class="col-12 col-md-6 col-lg-4">
-<<<<<<< HEAD
-                        <div class="card h-100 shadow-sm">
-                            <?php if ($refugio['foto_url']): ?>
-                                <img src="<?= htmlspecialchars($refugio['foto_url']) ?>"
-                                     class="card-img-top" alt="Foto del refugio"
-                                     style="height: 180px; object-fit: cover;"
-                                     onerror="this.style.display='none'">
-                            <?php endif; ?>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="badge badge-av-blue-light me-1">
-                                        <?= htmlspecialchars($refugio['estado']) ?>
-                                    </span>
-                                    <span class="badge bg-secondary"><?= htmlspecialchars($refugio['municipio']) ?></span>
-                                </h5>
-                                <p class="card-text small mb-1">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <?= htmlspecialchars(mb_substr($refugio['direccion'], 0, 80)) ?>
-                                    <?= mb_strlen($refugio['direccion']) > 80 ? '...' : '' ?>
-                                </p>
-                                <?php if ($refugio['telefono']): ?>
-                                    <p class="card-text small mb-1">
-                                        <i class="bi bi-telephone"></i>
-                                        <a href="tel:<?= htmlspecialchars($refugio['telefono']) ?>"><?= htmlspecialchars($refugio['telefono']) ?></a>
-                                    </p>
-                                <?php endif; ?>
-                                <div class="mt-2 small">
-                                    <?php if (count($falta) > 0): ?>
-                                        <span class="text-av-red fw-semibold">❌ Falta:</span>
-                                        <?php foreach (array_slice($falta, 0, 3) as $item): ?>
-                                            <span class="badge badge-av-red-light me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                        <?php endforeach; ?>
-                                        <?php if (count($falta) > 3): ?>
-                                            <span class="text-muted">+<?= count($falta) - 3 ?> más</span>
-                                        <?php endif; ?>
-                                        <br>
-                                    <?php endif; ?>
-                                    <?php if (count($sobra) > 0): ?>
-                                        <span class="text-av-green fw-semibold">✅ Sobra:</span>
-                                        <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
-                                            <span class="badge badge-av-green-light me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                        <?php endforeach; ?>
-                                        <?php if (count($sobra) > 3): ?>
-                                            <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
-=======
                         <a href="/refugio/<?= $refugio['id'] ?>" class="text-decoration-none">
                             <div class="card h-100 shadow-sm border-danger">
                                 <?php if ($refugio['foto_url']): ?>
@@ -230,7 +155,6 @@
                                             <?php if (count($falta) > 3): ?>
                                                 <span class="text-muted small">+<?= count($falta) - 3 ?></span>
                                             <?php endif; ?>
->>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
                                         <?php endif; ?>
                                         <?php if (count($sobra) > 0): ?>
                                             <br>
@@ -248,16 +172,7 @@
                                     </p>
                                 </div>
                             </div>
-<<<<<<< HEAD
-                            <div class="card-footer bg-transparent">
-                                <a href="/refugio/<?= $refugio['id'] ?>" class="btn btn-av-outline-blue btn-sm w-100">
-                                    <i class="bi bi-eye"></i> Ver detalle
-                                </a>
-                            </div>
-                        </div>
-=======
                         </a>
->>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -283,23 +198,7 @@
         </div>
     </main>
 
-<<<<<<< HEAD
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
-=======
-    <footer class="bg-light py-3 mt-4">
-        <div class="container text-center text-muted small">
-            <i class="bi bi-house-heart-fill text-danger"></i>
-            Refugios &mdash; Apoya Venezuela
-            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
-            <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
-            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-        </div>
-        <div class="container text-center text-muted small mt-1">
-            Proyecto libre de uso, sin fines de lucro ni monetización. Solo colaboramos por la situación de Venezuela.
-        </div>
-    </footer>
->>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/app.js"></script>

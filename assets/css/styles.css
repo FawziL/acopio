@@ -252,8 +252,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .av-bar-blue {
-  height: 4px;
+  height: 10px;
   background: var(--av-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 7px;
+  line-height: 10px;
+  color: #fff;
+  letter-spacing: 4px;
+}
+.av-bar-blue::after {
+  content: "★ ★ ★ ★ ★ ★ ★ ★";
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .av-bar-red {
@@ -294,6 +308,16 @@ h1, h2, h3, h4, h5, h6 {
     var(--av-red) 66.66% 100%);
   box-shadow: var(--av-shadow-1);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6px;
+  line-height: 24px;
+  color: #fff;
+}
+.av-brand-mark::after {
+  content: "★";
+}
 }
 
 .av-brand-name {

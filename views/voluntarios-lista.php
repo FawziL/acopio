@@ -11,52 +11,23 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Apoya Venezuela
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php $activeNav = 'voluntarios'; ?>
+    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
 
     <main class="av-main">
         <div class="container py-4">
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-            <a href="/" class="btn btn-av-outline-blue btn-sm">
-                <i class="bi bi-arrow-left"></i> Volver
-            </a>
-            <a href="/voluntarios" class="btn btn-av-red">
-                <i class="bi bi-plus-circle"></i> Registrarme como voluntario
-            </a>
-        </div>
 
-        <h2 class="h4 mb-1">Voluntarios Registrados</h2>
-        <p class="text-muted mb-4">Personas que han ofrecido su ayuda.</p>
+        <div class="row mb-4">
+            <div class="col-12 col-md-8">
+                <h1 class="h3">Voluntarios Registrados</h1>
+                <p class="text-muted">Personas que han ofrecido su ayuda.</p>
+            </div>
+            <div class="col-12 col-md-4 text-md-end">
+                <a href="/voluntarios" class="btn btn-av-blue">
+                    <i class="bi bi-plus-circle"></i> Registrarme
+                </a>
+            </div>
+        </div>
 
         <form id="filtro-form" class="row g-2 mb-4">
             <div class="col-12 col-md-3">

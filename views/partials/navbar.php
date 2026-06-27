@@ -21,6 +21,16 @@
           </a>
         </li>
         <li>
+          <a class="av-nav-link<?= $activeNav === 'averias' ? ' active' : '' ?>" href="/averias/lista">
+            <i class="bi bi-exclamation-triangle"></i>Averías
+          </a>
+        </li>
+        <li>
+          <a class="av-nav-link<?= $activeNav === 'damnificados' ? ' active' : '' ?>" href="/damnificados/lista">
+            <i class="bi bi-people"></i>Damnificados
+          </a>
+        </li>
+        <li>
           <a class="av-nav-link<?= $activeNav === 'portales' ? ' active' : '' ?>" href="/portales">
             <i class="bi bi-globe2"></i>Portales
           </a>

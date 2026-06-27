@@ -69,30 +69,30 @@
                              style="max-height: 300px; object-fit: cover;"
                              onerror="this.style.display='none'">
                     <?php endif; ?>
-                    <div class="card-body">
-                        <h3 class="h5 card-title">Centro de Acopio</h3>
-                        <table class="table table-sm table-borderless mb-0">
+                    <div class="card-body p-4">
+                        <h3 class="h5 card-title mb-3">Centro de Acopio</h3>
+                        <table class="table table-borderless mb-0">
                             <tr>
-                                <th class="ps-0" style="width:100px;">Estado</th>
+                                <th class="ps-0 pb-2" style="width:100px;">Estado</th>
                                 <td><span class="badge badge-av-blue-light"><?= htmlspecialchars($centro['estado']) ?></span></td>
                             </tr>
                             <tr>
-                                <th class="ps-0">Municipio</th>
+                                <th class="ps-0 pb-2">Municipio</th>
                                 <td><?= htmlspecialchars($centro['municipio']) ?></td>
                             </tr>
                             <?php if ($centro['parroquia']): ?>
                             <tr>
-                                <th class="ps-0">Parroquia</th>
+                                <th class="ps-0 pb-2">Parroquia</th>
                                 <td><?= htmlspecialchars($centro['parroquia']) ?></td>
                             </tr>
                             <?php endif; ?>
                             <tr>
-                                <th class="ps-0">Direccion</th>
+                                <th class="ps-0 pb-2">Direccion</th>
                                 <td><?= nl2br(htmlspecialchars($centro['direccion'])) ?></td>
                             </tr>
                             <?php if ($centro['telefono']): ?>
                             <tr>
-                                <th class="ps-0">Telefono</th>
+                                <th class="ps-0 pb-2">Telefono</th>
                                 <td>
                                     <a href="tel:<?= htmlspecialchars($centro['telefono']) ?>" class="text-decoration-none">
                                         <?= htmlspecialchars($centro['telefono']) ?>
@@ -101,16 +101,16 @@
                             </tr>
                             <?php endif; ?>
                             <tr>
-                                <th class="ps-0">Registrado</th>
+                                <th class="ps-0 pb-2">Registrado</th>
                                 <td><small class="text-muted"><?= htmlspecialchars($centro['created_at']) ?></small></td>
                             </tr>
                             <tr>
-                                <th class="ps-0">Actualizado</th>
+                                <th class="ps-0 pb-2">Actualizado</th>
                                 <td><small class="text-muted"><?= htmlspecialchars($centro['updated_at']) ?></small></td>
                             </tr>
                             <?php if ($ultInv): ?>
                             <tr>
-                                <th class="ps-0">Inventario</th>
+                                <th class="ps-0 pb-2">Inventario</th>
                                 <td><small class="text-muted"><?= htmlspecialchars($ultInv) ?></small></td>
                             </tr>
                             <?php endif; ?>
@@ -120,7 +120,7 @@
             </div>
 
             <div class="col-12 col-lg-7">
-                <div class="row g-3 mb-4">
+                <div class="row g-4 mb-4">
                     <div class="col-12 col-md-6">
                         <div class="card shadow-sm h-100 border-av-red">
                             <div class="card-header card-header-av-red">
@@ -188,11 +188,11 @@
                     </div>
                 </div>
 
-                <div class="card shadow-sm">
+                <div class="card shadow-sm mt-5">
                     <div class="card-header">
                         <i class="bi bi-plus-circle"></i> Agregar articulo
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-4">
                         <form id="form-agregar-item" data-api="/api/inventario.php">
                             <input type="hidden" name="centro_id" value="<?= $id ?>">
                             <div class="row g-2">
@@ -318,9 +318,9 @@
         $reportes = $stmtRep->fetchAll();
         ?>
 
-        <div class="row mt-5">
+        <div class="row mt-5 pt-4">
             <div class="col-12">
-                <h3 class="h5 mb-3">
+                <h3 class="h4 mb-3">
                     <i class="bi bi-people-fill"></i> Reportes comunitarios
                 </h3>
                 <p class="text-muted small mb-4">
@@ -334,7 +334,7 @@
                     <div class="card-header">
                         <i class="bi bi-pencil-square"></i> Agregar reporte
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-4">
                         <form id="form-reporte">
                             <input type="hidden" name="centro_id" value="<?= $id ?>">
                             <div class="mb-3">
