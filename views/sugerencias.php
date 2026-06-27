@@ -96,19 +96,6 @@
 
             </div>
         </div>
-<<<<<<< HEAD
-=======
-    </div>
-
-    <footer class="bg-light py-3 mt-4">
-        <div class="container text-center text-muted small">
-            <i class="bi bi-house-heart-fill text-danger"></i>
-            Apoya Venezuela &mdash; Centros de Acopio y Refugios
-            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
-            <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
-            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
->>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
         </div>
     </main>
 
