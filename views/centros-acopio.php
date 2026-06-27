@@ -127,7 +127,8 @@
                     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
                 ?>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm">
+                        <a href="/centro-acopio/<?= $centro['id'] ?>" class="text-decoration-none">
+                        <div class="card h-100 shadow-sm border-danger">
                             <?php if ($centro['foto_url']): ?>
                                 <img src="<?= htmlspecialchars($centro['foto_url']) ?>"
                                      class="card-img-top" alt="Foto del centro"
@@ -172,15 +173,10 @@
                                             <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
                                         <?php endif; ?>
                                     <?php endif; ?>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-transparent">
-                                <a href="/centro-acopio/<?= $centro['id'] ?>" class="btn btn-av-outline-blue btn-sm w-100">
-                                    <i class="bi bi-eye"></i> Ver detalle
-                                </a>
-                            </div>
                         </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>

@@ -127,7 +127,8 @@
                     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
                 ?>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm">
+                        <a href="/refugio/<?= $refugio['id'] ?>" class="text-decoration-none">
+                        <div class="card h-100 shadow-sm border-danger">
                             <?php if ($refugio['foto_url']): ?>
                                 <img src="<?= htmlspecialchars($refugio['foto_url']) ?>"
                                      class="card-img-top" alt="Foto del refugio"
@@ -172,15 +173,10 @@
                                             <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
                                         <?php endif; ?>
                                     <?php endif; ?>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-transparent">
-                                <a href="/refugio/<?= $refugio['id'] ?>" class="btn btn-av-outline-blue btn-sm w-100">
-                                    <i class="bi bi-eye"></i> Ver detalle
-                                </a>
-                            </div>
                         </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
