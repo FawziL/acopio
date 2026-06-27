@@ -87,7 +87,7 @@
                                 <p class="card-text small text-muted">
                                     Ofrece tu tiempo y habilidades como voluntario.
                                 </p>
-                                <a href="/voluntarios/lista" class="btn btn-av-yellow mt-auto">
+                                <a href="/voluntarios" class="btn btn-av-yellow mt-auto">
                                     <i class="bi bi-people-fill"></i> Ser voluntario
                                 </a>
                             </div>
