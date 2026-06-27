@@ -29,19 +29,29 @@ if ($archivo['size'] > 5 * 1024 * 1024) {
 }
 
 $dir = __DIR__ . '/../uploads';
+
+$subdir = trim($_POST['folder'] ?? '');
+if ($subdir) {
+    $subdir = preg_replace('/[^a-zA-Z0-9_-]/', '', $subdir);
+    $dir .= '/' . $subdir;
+}
+
 if (!is_dir($dir)) {
     mkdir($dir, 0755, true);
 }
 
+$prefix = $subdir ?: 'centro';
 $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION) ?: 'jpg';
-$nombre = 'centro_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $extension;
+$nombre = $prefix . '_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $extension;
 $ruta = $dir . '/' . $nombre;
 
 if (!move_uploaded_file($archivo['tmp_name'], $ruta)) {
     jsonResponse(['error' => 'Error al guardar la imagen.'], 500);
 }
 
+$urlPath = '/uploads/' . ($subdir ? $subdir . '/' : '') . $nombre;
+
 jsonResponse([
     'mensaje'  => 'Imagen subida exitosamente.',
-    'foto_url' => '/uploads/' . $nombre,
+    'foto_url' => $urlPath,
 ], 201);

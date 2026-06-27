@@ -26,6 +26,9 @@
                         <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">

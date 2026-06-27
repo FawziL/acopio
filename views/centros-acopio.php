@@ -26,6 +26,9 @@
                         <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
@@ -151,59 +154,52 @@
                     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
                 ?>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card h-100 shadow-sm">
-                            <?php if ($centro['foto_url']): ?>
-                                <img src="<?= htmlspecialchars($centro['foto_url']) ?>"
-                                     class="card-img-top" alt="Foto del centro"
-                                     style="height: 180px; object-fit: cover;"
-                                     onerror="this.style.display='none'">
-                            <?php endif; ?>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <span class="badge bg-danger bg-opacity-10 text-danger me-1">
-                                        <?= htmlspecialchars($centro['estado']) ?>
-                                    </span>
-                                    <span class="badge bg-secondary"><?= htmlspecialchars($centro['municipio']) ?></span>
-                                </h5>
-                                <p class="card-text small mb-1">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <?= htmlspecialchars(mb_substr($centro['direccion'], 0, 80)) ?>
-                                    <?= mb_strlen($centro['direccion']) > 80 ? '...' : '' ?>
-                                </p>
-                                <?php if ($centro['telefono']): ?>
-                                    <p class="card-text small mb-1">
-                                        <i class="bi bi-telephone"></i>
-                                        <a href="tel:<?= htmlspecialchars($centro['telefono']) ?>"><?= htmlspecialchars($centro['telefono']) ?></a>
-                                    </p>
+                        <a href="/centro-acopio/<?= $centro['id'] ?>" class="text-decoration-none">
+                            <div class="card h-100 shadow-sm border-danger">
+                                <?php if ($centro['foto_url']): ?>
+                                    <img src="<?= htmlspecialchars($centro['foto_url']) ?>"
+                                         class="card-img-top" alt="Foto del centro"
+                                         style="height: 180px; object-fit: cover;"
+                                         onerror="this.style.display='none'">
                                 <?php endif; ?>
-                                <div class="mt-2 small">
-                                    <?php if (count($falta) > 0): ?>
-                                        <span class="text-danger fw-semibold">❌ Falta:</span>
-                                        <?php foreach (array_slice($falta, 0, 3) as $item): ?>
-                                            <span class="badge bg-danger bg-opacity-10 text-danger me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                        <?php endforeach; ?>
-                                        <?php if (count($falta) > 3): ?>
-                                            <span class="text-muted">+<?= count($falta) - 3 ?> más</span>
-                                        <?php endif; ?>
-                                        <br>
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger"><?= htmlspecialchars($centro['direccion'] ? mb_substr($centro['direccion'], 0, 60) : 'Centro #' . $centro['id']) ?></h5>
+                                    <p class="card-text small text-muted mb-1">
+                                        <i class="bi bi-geo-alt"></i>
+                                        <?= htmlspecialchars($centro['estado']) ?> &middot; <?= htmlspecialchars($centro['municipio']) ?>
+                                    </p>
+                                    <?php if ($centro['telefono']): ?>
+                                        <p class="card-text small text-muted mb-1">
+                                            <i class="bi bi-telephone"></i> <?= htmlspecialchars($centro['telefono']) ?>
+                                        </p>
                                     <?php endif; ?>
-                                    <?php if (count($sobra) > 0): ?>
-                                        <span class="text-success fw-semibold">✅ Sobra:</span>
-                                        <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
-                                            <span class="badge bg-success bg-opacity-10 text-success me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                        <?php endforeach; ?>
-                                        <?php if (count($sobra) > 3): ?>
-                                            <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
+                                    <p class="card-text small mb-1">
+                                        <?php if (count($falta) > 0): ?>
+                                            <span class="text-danger fw-semibold">❌ Falta:</span>
+                                            <?php foreach (array_slice($falta, 0, 3) as $item): ?>
+                                                <span class="badge bg-danger bg-opacity-10 text-danger me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                            <?php endforeach; ?>
+                                            <?php if (count($falta) > 3): ?>
+                                                <span class="text-muted small">+<?= count($falta) - 3 ?></span>
+                                            <?php endif; ?>
                                         <?php endif; ?>
-                                    <?php endif; ?>
+                                        <?php if (count($sobra) > 0): ?>
+                                            <br>
+                                            <span class="text-success fw-semibold">✅ Sobra:</span>
+                                            <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
+                                                <span class="badge bg-success bg-opacity-10 text-success me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                            <?php endforeach; ?>
+                                            <?php if (count($sobra) > 3): ?>
+                                                <span class="text-muted small">+<?= count($sobra) - 3 ?></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </p>
+                                    <p class="card-text small text-muted mb-0">
+                                        <i class="bi bi-clock"></i> <?= htmlspecialchars($centro['created_at']) ?>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="card-footer bg-transparent">
-                                <a href="/centro-acopio/<?= $centro['id'] ?>" class="btn btn-outline-danger btn-sm w-100">
-                                    <i class="bi bi-eye"></i> Ver detalle
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -234,6 +230,7 @@
             <i class="bi bi-house-heart-fill text-danger"></i>
             Centros de Acopio &mdash; Apoya Venezuela
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
             <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>

@@ -19,13 +19,15 @@ $action = $_GET['action'] ?? '';
 if ($method === 'GET') {
     $centroId  = (int)($_GET['centro_id'] ?? 0);
     $refugioId = (int)($_GET['refugio_id'] ?? 0);
-    if (!$centroId && !$refugioId) {
-        jsonResponse(['error' => 'centro_id o refugio_id es requerido.'], 400);
-    }
+    $averiaId  = (int)($_GET['averia_id'] ?? 0);
     if ($centroId) {
         listarReportes('centro_id', $centroId);
-    } else {
+    } elseif ($refugioId) {
         listarReportes('refugio_id', $refugioId);
+    } elseif ($averiaId) {
+        listarReportes('averia_id', $averiaId);
+    } else {
+        jsonResponse(['error' => 'centro_id, refugio_id o averia_id es requerido.'], 400);
     }
 }
 
@@ -44,9 +46,9 @@ function listarReportes(string $campo, int $id): void
 {
     global $pdo;
 
-    $campo = ($campo === 'refugio_id') ? 'refugio_id' : 'centro_id';
+    $validos = ['centro_id', 'refugio_id', 'averia_id'];
+    $campo = in_array($campo, $validos) ? $campo : 'centro_id';
 
-    // Obtener conteo de denuncias por reporte
     $stmtDen = $pdo->prepare("
         SELECT reporte_id, COUNT(*) AS total
         FROM reportes_denuncias
@@ -88,12 +90,13 @@ function crearReporte(): void
 
     $centroId  = (int)($input['centro_id'] ?? 0);
     $refugioId = (int)($input['refugio_id'] ?? 0);
+    $averiaId  = (int)($input['averia_id'] ?? 0);
     $mensaje   = trim($input['mensaje'] ?? '');
     $tipo      = $input['tipo'] ?? 'comentario';
     $nombre    = trim($input['nombre'] ?? 'Anónimo');
 
-    if ((!$centroId && !$refugioId) || empty($mensaje)) {
-        jsonResponse(['error' => 'centro_id o refugio_id, y mensaje son obligatorios.'], 400);
+    if ((!$centroId && !$refugioId && !$averiaId) || empty($mensaje)) {
+        jsonResponse(['error' => 'centro_id, refugio_id o averia_id, y mensaje son obligatorios.'], 400);
     }
 
     if (!in_array($tipo, ['valida', 'alerta', 'denuncia', 'comentario'])) {
@@ -103,66 +106,48 @@ function crearReporte(): void
     if ($centroId) {
         $stmt = $pdo->prepare("SELECT id FROM centros WHERE id = :id");
         $stmt->execute([':id' => $centroId]);
-        if (!$stmt->fetch()) {
-            jsonResponse(['error' => 'Centro no encontrado.'], 404);
-        }
-    } else {
+        if (!$stmt->fetch()) jsonResponse(['error' => 'Centro no encontrado.'], 404);
+    } elseif ($refugioId) {
         $stmt = $pdo->prepare("SELECT id FROM refugios WHERE id = :id");
         $stmt->execute([':id' => $refugioId]);
-        if (!$stmt->fetch()) {
-            jsonResponse(['error' => 'Refugio no encontrado.'], 404);
-        }
+        if (!$stmt->fetch()) jsonResponse(['error' => 'Refugio no encontrado.'], 404);
+    } else {
+        $stmt = $pdo->prepare("SELECT id FROM averias WHERE id = :id");
+        $stmt->execute([':id' => $averiaId]);
+        if (!$stmt->fetch()) jsonResponse(['error' => 'Avería no encontrada.'], 404);
     }
 
-    // Turnstile
     if (!validarTurnstile($input['turnstile_token'] ?? '')) {
         jsonResponse(['error' => 'Verificacion de seguridad fallida.'], 403);
     }
 
-    // Filtro de palabras prohibidas
     if (tienePalabrasProhibidas($mensaje) || tienePalabrasProhibidas($nombre)) {
         jsonResponse(['error' => 'El mensaje contiene lenguaje inapropiado.'], 400);
     }
 
-    // Rate limiting por IP + entidad (1 cada 3 horas)
     $ip = getClientIP();
-    $entidadId = $centroId ?: $refugioId;
+    $entidadId = $centroId ?: ($refugioId ?: $averiaId);
     if (!checkRateLimitPorCentro($ip, $entidadId, 3)) {
-        jsonResponse([
-            'error' => 'Ya reportaste en esta entidad hace poco. Puedes volver a reportar en 3 horas.',
-        ], 429);
+        jsonResponse(['error' => 'Ya reportaste en esta entidad hace poco. Puedes volver a reportar en 3 horas.'], 429);
     }
 
-    if (mb_strlen($nombre) > 100) {
-        $nombre = mb_substr($nombre, 0, 100);
-    }
-    if (mb_strlen($mensaje) > 2000) {
-        $mensaje = mb_substr($mensaje, 0, 2000);
-    }
+    if (mb_strlen($nombre) > 100) $nombre = mb_substr($nombre, 0, 100);
+    if (mb_strlen($mensaje) > 2000) $mensaje = mb_substr($mensaje, 0, 2000);
 
     if ($centroId) {
-        $stmt = $pdo->prepare("
-            INSERT INTO reportes (centro_id, nombre_anonimo, tipo_reporte, mensaje)
-            VALUES (:centro_id, :nombre, :tipo, :mensaje)
-        ");
-        $stmt->execute([
-            ':centro_id' => $centroId,
-            ':nombre'    => $nombre ?: 'Anónimo',
-            ':tipo'      => $tipo,
-            ':mensaje'   => $mensaje,
-        ]);
+        $stmt = $pdo->prepare("INSERT INTO reportes (centro_id, nombre_anonimo, tipo_reporte, mensaje) VALUES (:entidad_id, :nombre, :tipo, :mensaje)");
+    } elseif ($refugioId) {
+        $stmt = $pdo->prepare("INSERT INTO reportes (refugio_id, nombre_anonimo, tipo_reporte, mensaje) VALUES (:entidad_id, :nombre, :tipo, :mensaje)");
     } else {
-        $stmt = $pdo->prepare("
-            INSERT INTO reportes (refugio_id, nombre_anonimo, tipo_reporte, mensaje)
-            VALUES (:refugio_id, :nombre, :tipo, :mensaje)
-        ");
-        $stmt->execute([
-            ':refugio_id' => $refugioId,
-            ':nombre'     => $nombre ?: 'Anónimo',
-            ':tipo'       => $tipo,
-            ':mensaje'    => $mensaje,
-        ]);
+        $stmt = $pdo->prepare("INSERT INTO reportes (averia_id, nombre_anonimo, tipo_reporte, mensaje) VALUES (:entidad_id, :nombre, :tipo, :mensaje)");
     }
+
+    $stmt->execute([
+        ':entidad_id' => $entidadId,
+        ':nombre'     => $nombre ?: 'Anónimo',
+        ':tipo'       => $tipo,
+        ':mensaje'    => $mensaje,
+    ]);
 
     jsonResponse([
         'mensaje'    => 'Reporte enviado. Gracias por ayudar a la comunidad.',
@@ -184,28 +169,24 @@ function denunciarReporte(): void
         jsonResponse(['error' => 'reporte_id es requerido.'], 400);
     }
 
-    $ip  = getClientIP();
+    $ip   = getClientIP();
     $hash = sha1($ip);
 
-    // Verificar que el reporte exista y esté activo
     $stmt = $pdo->prepare("SELECT id FROM reportes WHERE id = :id AND activo = 1");
     $stmt->execute([':id' => $reporteId]);
     if (!$stmt->fetch()) {
         jsonResponse(['error' => 'Reporte no encontrado.'], 404);
     }
 
-    // Evitar doble denuncia desde la misma IP
     $stmt = $pdo->prepare("SELECT id FROM reportes_denuncias WHERE reporte_id = :rid AND ip_hash = :ip");
     $stmt->execute([':rid' => $reporteId, ':ip' => $hash]);
     if ($stmt->fetch()) {
         jsonResponse(['error' => 'Ya reportaste este comentario.'], 409);
     }
 
-    // Insertar denuncia
     $stmt = $pdo->prepare("INSERT INTO reportes_denuncias (reporte_id, ip_hash) VALUES (:rid, :ip)");
     $stmt->execute([':rid' => $reporteId, ':ip' => $hash]);
 
-    // Contar denuncias: si llega a 3, ocultar automáticamente
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM reportes_denuncias WHERE reporte_id = :rid");
     $stmt->execute([':rid' => $reporteId]);
     $totalDenuncias = (int)$stmt->fetchColumn();

@@ -26,6 +26,9 @@
                         <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
@@ -55,10 +58,10 @@
                                 <i class="bi bi-box-seam display-1 text-danger"></i>
                                 <h3 class="h4 mt-3">Centros de Acopio</h3>
                                 <p class="text-muted">
-                                    Puntos de recolección de donaciones. Consulta qué falta y qué sobra en cada centro.
+                                    Puntos de recolección de donaciones.
                                 </p>
                                 <a href="/centros-acopio" class="btn btn-danger">
-                                    <i class="bi bi-box-seam"></i> Ver centros de acopio
+                                    <i class="bi bi-box-seam"></i> Ver centros
                                 </a>
                             </div>
                         </div>
@@ -69,7 +72,7 @@
                                 <i class="bi bi-house-heart-fill display-1 text-danger"></i>
                                 <h3 class="h4 mt-3">Refugios</h3>
                                 <p class="text-muted">
-                                    Albergues y refugios disponibles para personas damnificadas. Reporta y consulta información.
+                                    Albergues para damnificados.
                                 </p>
                                 <a href="/refugios" class="btn btn-danger">
                                     <i class="bi bi-house-heart-fill"></i> Ver refugios
@@ -83,7 +86,7 @@
                                 <i class="bi bi-people-fill display-1 text-danger"></i>
                                 <h3 class="h4 mt-3">Voluntarios</h3>
                                 <p class="text-muted">
-                                    Ofrece tu tiempo y habilidades. No es una donación, es tu ayuda directa como voluntario.
+                                    Ofrece tu ayuda como voluntario.
                                 </p>
                                 <a href="/voluntarios" class="btn btn-danger">
                                     <i class="bi bi-people-fill"></i> Ser voluntario
