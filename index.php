@@ -57,7 +57,7 @@
                                 <i class="bi bi-house-heart-fill display-3 text-av-red"></i>
                                 <h5 class="card-title mt-3">Refugios</h5>
                                 <p class="card-text small text-muted">
-                                    Albergues disponibles para personas damnificadas.
+                                    Albergues y refugios disponibles para personas damnificadas. Reporta y consulta información.
                                 </p>
                                 <a href="/refugios" class="btn btn-av-red mt-auto">
                                     <i class="bi bi-house-heart"></i> Ver refugios
@@ -71,7 +71,7 @@
                                 <i class="bi bi-box-seam display-3 text-av-blue"></i>
                                 <h5 class="card-title mt-3">Centros de Acopio</h5>
                                 <p class="card-text small text-muted">
-                                    Puntos de recolección de donaciones.
+                                    Puntos de recolección de donaciones. Consulta qué falta y qué sobra en cada centro.
                                 </p>
                                 <a href="/centros-acopio" class="btn btn-av-blue mt-auto">
                                     <i class="bi bi-box-seam"></i> Ver centros
@@ -85,9 +85,9 @@
                                 <i class="bi bi-people-fill display-3 text-av-yellow"></i>
                                 <h5 class="card-title mt-3">Voluntarios</h5>
                                 <p class="card-text small text-muted">
-                                    Ofrece tu tiempo y habilidades como voluntario.
+                                    Ofrece tu tiempo y habilidades. No es una donación, es tu ayuda directa como voluntario.
                                 </p>
-                                <a href="/voluntarios" class="btn btn-av-yellow mt-auto">
+                                <a href="/voluntarios/lista" class="btn btn-av-yellow mt-auto">
                                     <i class="bi bi-people-fill"></i> Ser voluntario
                                 </a>
                             </div>
