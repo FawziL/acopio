@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Acopio - Apoya Venezuela</title>
     <?php require_once __DIR__ . '/partials/head.php'; ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -445,15 +446,6 @@
         </div>
     </div>
 
-    <footer class="bg-light py-3 mt-4">
-        <div class="container text-center text-muted small">
-            <i class="bi bi-house-heart-fill text-danger"></i>
-            Centros de Acopio &mdash; Apoya Venezuela
-            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
-            <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
-            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-        </div>
     </main>
 
     <?php require_once __DIR__ . '/partials/footer.php'; ?>

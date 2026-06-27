@@ -6,44 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refugio - Apoya Venezuela</title>
     <?php require_once __DIR__ . '/partials/head.php'; ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Refugios
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php $activeNav = 'refugio'; ?>
+    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
 
+    <main class="av-main">
     <?php
     $id = (int)($_GET['id'] ?? 0);
     if (!$id) {
