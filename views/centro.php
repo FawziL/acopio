@@ -4,49 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Acopio - Detalle</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Centro de Acopio - Apoya Venezuela</title>
+    <?php require_once __DIR__ . '/partials/head.php'; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Centros de Acopio
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php $activeNav = 'centros'; ?>
+    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
 
     <?php
     $id = (int)($_GET['id'] ?? 0);
     if (!$id) {
-        echo '<div class="container py-5"><div class="alert alert-danger">ID de centro no valido.</div></div>';
+        echo '<div class="container py-5"><div class="alert alert-av-red">ID de centro no valido.</div></div>';
         exit;
     }
 
@@ -62,7 +33,7 @@
     $centro = $stmt->fetch();
 
     if (!$centro) {
-        echo '<div class="container py-5"><div class="alert alert-danger">Centro no encontrado.</div></div>';
+        echo '<div class="container py-5"><div class="alert alert-av-red">Centro no encontrado.</div></div>';
         exit;
     }
 
@@ -83,8 +54,9 @@
     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
     ?>
 
-    <div class="container py-4">
-        <a href="/centros-acopio" class="btn btn-outline-secondary btn-sm mb-3">
+    <main class="av-main">
+        <div class="container py-4">
+        <a href="/centros-acopio" class="btn btn-av-outline-blue btn-sm mb-3">
             <i class="bi bi-arrow-left"></i> Volver al listado
         </a>
 
@@ -102,7 +74,7 @@
                         <table class="table table-sm table-borderless mb-0">
                             <tr>
                                 <th class="ps-0" style="width:100px;">Estado</th>
-                                <td><span class="badge bg-danger bg-opacity-10 text-danger"><?= htmlspecialchars($centro['estado']) ?></span></td>
+                                <td><span class="badge badge-av-blue-light"><?= htmlspecialchars($centro['estado']) ?></span></td>
                             </tr>
                             <tr>
                                 <th class="ps-0">Municipio</th>
@@ -150,26 +122,26 @@
             <div class="col-12 col-lg-7">
                 <div class="row g-3 mb-4">
                     <div class="col-12 col-md-6">
-                        <div class="card shadow-sm h-100 border-danger">
-                            <div class="card-header bg-danger text-white">
+                        <div class="card shadow-sm h-100 border-av-red">
+                            <div class="card-header card-header-av-red">
                                 <i class="bi bi-exclamation-triangle-fill"></i> Lo que falta
                             </div>
                             <div class="card-body p-3">
                                 <?php if (count($falta) > 0): ?>
                                     <div class="d-flex flex-column gap-2">
                                         <?php foreach ($falta as $item): ?>
-                                            <div class="d-flex align-items-center gap-2 p-2 rounded-3 bg-danger bg-opacity-10 border border-danger border-opacity-25 eliminar-item"
+                                            <div class="d-flex align-items-center gap-2 p-2 rounded-3 bg-av-red-light border border-av-red border-opacity-25 eliminar-item"
                                                  data-id="<?= $item['id'] ?>">
-                                                <span class="badge bg-danger rounded-circle p-1 d-flex align-items-center justify-content-center" style="width:32px;height:32px;">
+                                                <span class="badge bg-av-red rounded-circle p-1 d-flex align-items-center justify-content-center" style="width:32px;height:32px;">
                                                     <i class="bi bi-exclamation-circle text-white small"></i>
                                                 </span>
                                                 <div class="flex-grow-1 min-w-0">
                                                     <strong class="d-block text-truncate"><?= htmlspecialchars($item['item']) ?></strong>
                                                     <?php if ($item['cantidad']): ?>
-                                                        <small class="text-danger-emphasis"><?= htmlspecialchars($item['cantidad']) ?></small>
+                                                        <small class="text-av-emphasis-red"><?= htmlspecialchars($item['cantidad']) ?></small>
                                                     <?php endif; ?>
                                                 </div>
-                                                <button class="btn btn-outline-danger btn-sm border-0 flex-shrink-0" title="Eliminar">
+                                                <button class="btn btn-av-outline-red btn-sm border-0 flex-shrink-0" title="Eliminar">
                                                     <i class="bi bi-x-lg"></i>
                                                 </button>
                                             </div>
@@ -183,26 +155,26 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <div class="card shadow-sm h-100 border-success">
-                            <div class="card-header bg-success text-white">
+                        <div class="card shadow-sm h-100 border-av-green">
+                            <div class="card-header card-header-av-green">
                                 <i class="bi bi-check-circle-fill"></i> Lo que sobra
                             </div>
                             <div class="card-body p-3">
                                 <?php if (count($sobra) > 0): ?>
                                     <div class="d-flex flex-column gap-2">
                                         <?php foreach ($sobra as $item): ?>
-                                            <div class="d-flex align-items-center gap-2 p-2 rounded-3 bg-success bg-opacity-10 border border-success border-opacity-25 eliminar-item"
+                                            <div class="d-flex align-items-center gap-2 p-2 rounded-3 bg-av-green-light border border-av-green border-opacity-25 eliminar-item"
                                                  data-id="<?= $item['id'] ?>">
-                                                <span class="badge bg-success rounded-circle p-1 d-flex align-items-center justify-content-center" style="width:32px;height:32px;">
+                                                <span class="badge bg-av-green rounded-circle p-1 d-flex align-items-center justify-content-center" style="width:32px;height:32px;">
                                                     <i class="bi bi-check-circle text-white small"></i>
                                                 </span>
                                                 <div class="flex-grow-1 min-w-0">
                                                     <strong class="d-block text-truncate"><?= htmlspecialchars($item['item']) ?></strong>
                                                     <?php if ($item['cantidad']): ?>
-                                                        <small class="text-success-emphasis"><?= htmlspecialchars($item['cantidad']) ?></small>
+                                                        <small class="text-av-emphasis-green"><?= htmlspecialchars($item['cantidad']) ?></small>
                                                     <?php endif; ?>
                                                 </div>
-                                                <button class="btn btn-outline-success btn-sm border-0 flex-shrink-0" title="Eliminar">
+                                                <button class="btn btn-av-outline-green btn-sm border-0 flex-shrink-0" title="Eliminar">
                                                     <i class="bi bi-x-lg"></i>
                                                 </button>
                                             </div>
@@ -323,7 +295,7 @@
                             </div>
                             <div class="mt-2">
                                 <input type="hidden" name="turnstile_token" id="turnstile_token">
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-av-blue">
                                     <i class="bi bi-plus-circle"></i> Agregar
                                 </button>
                             </div>
@@ -371,21 +343,21 @@
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="tipo"
                                                id="tipo-valida" value="valida" checked>
-                                        <label class="form-check-label text-success fw-semibold" for="tipo-valida">
+                                        <label class="form-check-label text-av-green fw-semibold" for="tipo-valida">
                                             🟢 Confirmación
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="tipo"
                                                id="tipo-alerta" value="alerta">
-                                        <label class="form-check-label text-warning fw-semibold" for="tipo-alerta">
+                                        <label class="form-check-label text-av-yellow fw-semibold" for="tipo-alerta">
                                             ⚠️ Alerta
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="tipo"
                                                id="tipo-denuncia" value="denuncia">
-                                        <label class="form-check-label text-danger fw-semibold" for="tipo-denuncia">
+                                        <label class="form-check-label text-av-red fw-semibold" for="tipo-denuncia">
                                             🚨 Denuncia
                                         </label>
                                     </div>
@@ -414,7 +386,7 @@
                                      data-callback="onTurnstileReporteCallback"></div>
                             </div>
                             <input type="hidden" name="turnstile_token" id="turnstile_token_reporte">
-                            <button type="submit" class="btn btn-danger w-100">
+                            <button type="submit" class="btn btn-av-blue w-100">
                                 <i class="bi bi-send"></i> Enviar reporte
                             </button>
                         </form>
@@ -432,15 +404,15 @@
                     <div class="list-group">
                         <?php foreach ($reportes as $rep):
                             $icono = match ($rep['tipo_reporte']) {
-                                'valida'    => '<span class="text-success fw-bold">🟢 Confirmacion</span>',
-                                'alerta'    => '<span class="text-warning fw-bold">⚠️ Alerta</span>',
-                                'denuncia'  => '<span class="text-danger fw-bold">🚨 Denuncia</span>',
+                                'valida'    => '<span class="text-av-green fw-bold">🟢 Confirmacion</span>',
+                                'alerta'    => '<span class="text-av-yellow fw-bold">⚠️ Alerta</span>',
+                                'denuncia'  => '<span class="text-av-red fw-bold">🚨 Denuncia</span>',
                                 default     => '<span class="text-muted fw-bold">💬 Comentario</span>',
                             };
                             $borde = match ($rep['tipo_reporte']) {
-                                'valida'    => 'border-start border-success border-4',
-                                'alerta'    => 'border-start border-warning border-4',
-                                'denuncia'  => 'border-start border-danger border-4',
+                                'valida'    => 'border-start border-av-green border-4',
+                                'alerta'    => 'border-start border-av-yellow border-4',
+                                'denuncia'  => 'border-start border-av-red border-4',
                                 default     => 'border-start border-secondary border-4',
                             };
                         ?>
@@ -455,11 +427,11 @@
                                         <small class="text-muted text-nowrap">
                                             <?= date('d/m/Y H:i', strtotime($rep['created_at'])) ?>
                                         </small>
-                                        <button class="btn btn-outline-danger btn-sm denunciar-btn"
+                                        <button class="btn btn-av-outline-red btn-sm denunciar-btn"
                                                 data-id="<?= $rep['id'] ?>" title="Reportar este comentario">
                                             <i class="bi bi-flag"></i>
                                             <?php if ($rep['denuncias'] > 0): ?>
-                                                <span class="badge bg-danger"><?= (int)$rep['denuncias'] ?></span>
+                                                <span class="badge bg-av-red"><?= (int)$rep['denuncias'] ?></span>
                                             <?php endif; ?>
                                         </button>
                                     </div>
@@ -482,7 +454,9 @@
             <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
-    </footer>
+    </main>
+
+    <?php require_once __DIR__ . '/partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -510,8 +484,8 @@
                     text: 'Esta acción no se puede deshacer.',
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#dc3545',
-                    cancelButtonColor: '#6c757d',
+                    confirmButtonColor: '#1E3A8A',
+                    cancelButtonColor: '#1F2937',
                     confirmButtonText: 'Sí, eliminar',
                     cancelButtonText: 'Cancelar',
                 }).then(function (result) {
@@ -524,13 +498,13 @@
                     .then(function (r) { return r.json(); })
                     .then(function (res) {
                         if (res.error) {
-                            Swal.fire({ icon: 'error', title: 'Error', text: res.error, confirmButtonColor: '#dc3545' });
+                            Swal.fire({ icon: 'error', title: 'Error', text: res.error, confirmButtonColor: '#1E3A8A' });
                         } else {
                             location.reload();
                         }
                     })
                     .catch(function () {
-                        Swal.fire({ icon: 'error', title: 'Error', text: 'Error al eliminar.', confirmButtonColor: '#dc3545' });
+                        Swal.fire({ icon: 'error', title: 'Error', text: 'Error al eliminar.', confirmButtonColor: '#1E3A8A' });
                     });
                 });
             });
@@ -547,7 +521,7 @@
                         icon: 'warning',
                         title: 'Verificacion requerida',
                         text: 'Completa la verificacion de seguridad.',
-                        confirmButtonColor: '#dc3545',
+                        confirmButtonColor: '#1E3A8A',
                     });
                     return;
                 }
@@ -566,7 +540,7 @@
                 .then(function (r) { return r.json(); })
                 .then(function (res) {
                     if (res.error) {
-                        Swal.fire({ icon: 'error', title: 'Error', text: res.error, confirmButtonColor: '#dc3545' });
+                        Swal.fire({ icon: 'error', title: 'Error', text: res.error, confirmButtonColor: '#1E3A8A' });
                     } else {
                         location.reload();
                     }
@@ -574,7 +548,7 @@
                     btn.innerHTML = '<i class="bi bi-send"></i> Enviar reporte';
                 })
                 .catch(function () {
-                    Swal.fire({ icon: 'error', title: 'Error', text: 'Error al enviar.', confirmButtonColor: '#dc3545' });
+                    Swal.fire({ icon: 'error', title: 'Error', text: 'Error al enviar.', confirmButtonColor: '#1E3A8A' });
                     btn.disabled = false;
                     btn.innerHTML = '<i class="bi bi-send"></i> Enviar reporte';
                 });
@@ -591,8 +565,8 @@
                     text: 'Consideras que este comentario es falso o inapropiado?',
                     icon: 'question',
                     showCancelButton: true,
-                    confirmButtonColor: '#dc3545',
-                    cancelButtonColor: '#6c757d',
+                    confirmButtonColor: '#1E3A8A',
+                    cancelButtonColor: '#1F2937',
                     confirmButtonText: 'Sí, denunciar',
                     cancelButtonText: 'Cancelar',
                 }).then(function (result) {
@@ -605,23 +579,23 @@
                     .then(function (r) { return r.json(); })
                     .then(function (res) {
                         if (res.error) {
-                            Swal.fire({ icon: 'error', title: 'Error', text: res.error, confirmButtonColor: '#dc3545' });
+                            Swal.fire({ icon: 'error', title: 'Error', text: res.error, confirmButtonColor: '#1E3A8A' });
                         } else if (res.ocultado) {
                             Swal.fire({
                                 icon: 'info', title: 'Ocultado',
                                 text: 'Este comentario ha sido ocultado.',
-                                confirmButtonColor: '#dc3545'
+                                confirmButtonColor: '#1E3A8A'
                             }).then(function () { location.reload(); });
                         } else {
                             Swal.fire({
                                 icon: 'success', title: 'Denunciado',
                                 text: 'Denuncia registrada.',
-                                confirmButtonColor: '#dc3545'
+                                confirmButtonColor: '#1E3A8A'
                             }).then(function () { location.reload(); });
                         }
                     })
                     .catch(function () {
-                        Swal.fire({ icon: 'error', title: 'Error', text: 'Error al denunciar.', confirmButtonColor: '#dc3545' });
+                        Swal.fire({ icon: 'error', title: 'Error', text: 'Error al denunciar.', confirmButtonColor: '#1E3A8A' });
                     });
                 });
             });

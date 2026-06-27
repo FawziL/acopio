@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voluntarios - Apoya Venezuela</title>
+    <?php require_once __DIR__ . '/partials/head.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
@@ -43,15 +45,16 @@
         </div>
     </nav>
 
-    <div class="container py-4">
+    <main class="av-main">
+        <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
 
                 <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
-                    <a href="/" class="btn btn-outline-secondary btn-sm">
+                    <a href="/" class="btn btn-av-outline-blue btn-sm">
                         <i class="bi bi-arrow-left"></i> Volver
                     </a>
-                    <a href="/voluntarios/lista" class="btn btn-outline-danger btn-sm">
+                    <a href="/voluntarios/lista" class="btn btn-av-outline-red btn-sm">
                         <i class="bi bi-list-ul"></i> Ver voluntarios registrados
                     </a>
                 </div>
@@ -111,14 +114,14 @@
                                                 </select>
                                             </div>
                                             <div class="col-12 col-md-2 d-flex align-items-start">
-                                                <button type="button" class="btn btn-outline-danger btn-sm vol-remover-zona" disabled>
+                                                <button type="button" class="btn btn-av-outline-red btn-sm vol-remover-zona" disabled>
                                                     <i class="bi bi-trash"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" id="vol-agregar-zona" class="btn btn-outline-danger btn-sm">
+                                <button type="button" id="vol-agregar-zona" class="btn btn-av-outline-red btn-sm">
                                     <i class="bi bi-plus-circle"></i> Agregar otra zona
                                 </button>
                             </div>
@@ -131,13 +134,13 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="tiene" id="vol-transp-tiene">
                                         <label class="form-check-label" for="vol-transp-tiene">
-                                            <i class="bi bi-car-front-fill text-success"></i> Puedo trasladarme por mis propios medios
+                                            <i class="bi bi-car-front-fill text-av-green"></i> Puedo trasladarme por mis propios medios
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="necesita" id="vol-transp-necesita">
                                         <label class="form-check-label" for="vol-transp-necesita">
-                                            <i class="bi bi-question-circle-fill text-warning"></i> Necesito que me busquen
+                                            <i class="bi bi-question-circle-fill text-av-yellow"></i> Necesito que me busquen
                                         </label>
                                     </div>
                                 </div>
@@ -224,7 +227,7 @@
 
                             <input type="hidden" name="turnstile_token" id="turnstile_token_voluntario">
 
-                            <button type="submit" class="btn btn-danger w-100">
+                            <button type="submit" class="btn btn-av-red w-100">
                                 <i class="bi bi-check-circle"></i> Registrarme como voluntario
                             </button>
                         </form>
@@ -233,6 +236,8 @@
 
             </div>
         </div>
+<<<<<<< HEAD
+=======
     </div>
 
     <footer class="bg-light py-3 mt-4">
@@ -243,8 +248,11 @@
             <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
             <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+>>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
         </div>
-    </footer>
+    </main>
+
+    <?php require_once __DIR__ . '/partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -265,7 +273,6 @@
             });
         }
 
-        // Zonas múltiples: estado → municipio cascada
         function initZonaCascada(estadoSelect, municipioSelect) {
             if (!estadoSelect || !municipioSelect) return;
             estadoSelect.addEventListener('change', function () {
@@ -312,7 +319,6 @@
             container.appendChild(nuevo);
         }
 
-        // Inicializar cascada en el primer item
         var primerItem = document.querySelector('.vol-zona-item');
         if (primerItem) {
             initZonaCascada(primerItem.querySelector('.vol-estado'), primerItem.querySelector('.vol-municipio'));
@@ -320,7 +326,6 @@
 
         document.getElementById('vol-agregar-zona').addEventListener('click', crearItemZona);
 
-        // Transporte mutuamente excluyente
         var transpTiene = document.getElementById('vol-transp-tiene');
         var transpNecesita = document.getElementById('vol-transp-necesita');
         if (transpTiene && transpNecesita) {
@@ -345,7 +350,7 @@
                     icon: 'warning',
                     title: 'Verificación requerida',
                     text: 'Completa la verificación de seguridad.',
-                    confirmButtonColor: '#dc3545',
+                    confirmButtonColor: '#1E3A8A',
                 });
                 return;
             }
@@ -367,7 +372,7 @@
                     icon: 'warning',
                     title: 'Tipo de apoyo requerido',
                     text: 'Selecciona al menos un tipo de apoyo.',
-                    confirmButtonColor: '#dc3545',
+                    confirmButtonColor: '#1E3A8A',
                 });
                 return;
             }
@@ -410,14 +415,14 @@
                         icon: 'error',
                         title: 'Error',
                         text: res.error,
-                        confirmButtonColor: '#dc3545',
+                        confirmButtonColor: '#1E3A8A',
                     });
                 } else {
                     Swal.fire({
                         icon: 'success',
                         title: 'Registrado',
                         text: res.mensaje || '¡Gracias por ofrecer tu apoyo!',
-                        confirmButtonColor: '#dc3545',
+                        confirmButtonColor: '#1E3A8A',
                     }).then(function () {
                         form.reset();
                         document.getElementById('vol-otro-container').style.display = 'none';
@@ -432,7 +437,7 @@
                     icon: 'error',
                     title: 'Error de conexión',
                     text: 'Error al registrar. Intenta de nuevo.',
-                    confirmButtonColor: '#dc3545',
+                    confirmButtonColor: '#1E3A8A',
                 });
                 btn.disabled = false;
                 btn.innerHTML = '<i class="bi bi-check-circle"></i> Registrarme como voluntario';

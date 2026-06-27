@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerencias</title>
+    <?php require_once __DIR__ . '/partials/head.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
@@ -43,11 +45,12 @@
         </div>
     </nav>
 
-    <div class="container py-4">
+    <main class="av-main">
+        <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
 
-                <a href="/" class="btn btn-outline-secondary btn-sm mb-3">
+                <a href="/" class="btn btn-av-outline-blue btn-sm mb-3">
                     <i class="bi bi-arrow-left"></i> Volver
                 </a>
 
@@ -84,7 +87,7 @@
 
                             <input type="hidden" name="turnstile_token" id="turnstile_token_sugerencia">
 
-                            <button type="submit" class="btn btn-danger w-100">
+                            <button type="submit" class="btn btn-av-blue w-100">
                                 <i class="bi bi-send"></i> Enviar sugerencia
                             </button>
                         </form>
@@ -93,6 +96,8 @@
 
             </div>
         </div>
+<<<<<<< HEAD
+=======
     </div>
 
     <footer class="bg-light py-3 mt-4">
@@ -103,8 +108,11 @@
             <a href="/averias/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-exclamation-triangle"></i> Averías</a>
             <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
+>>>>>>> 5594375ef987fc4dc092cb29f6dac57b1c3129c6
         </div>
-    </footer>
+    </main>
+
+    <?php require_once __DIR__ . '/partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -126,8 +134,8 @@
                 Swal.fire({
                     icon: 'warning',
                     title: 'Verificación requerida',
-                    text: 'Completa la verificación de seguridad.',
-                    confirmButtonColor: '#dc3545',
+                    text: 'Completa la verificacion de seguridad.',
+                    confirmButtonColor: '#1E3A8A',
                 });
                 return;
             }
@@ -155,14 +163,14 @@
                         icon: 'error',
                         title: 'Error',
                         text: res.error,
-                        confirmButtonColor: '#dc3545',
+                        confirmButtonColor: '#1E3A8A',
                     });
                 } else {
                     Swal.fire({
                         icon: 'success',
                         title: 'Enviado',
                         text: res.mensaje || '¡Gracias por tu sugerencia!',
-                        confirmButtonColor: '#dc3545',
+                        confirmButtonColor: '#1E3A8A',
                     }).then(function () {
                         form.reset();
                         turnstile.reset();
@@ -176,7 +184,7 @@
                     icon: 'error',
                     title: 'Error de conexión',
                     text: 'Error al enviar. Intenta de nuevo.',
-                    confirmButtonColor: '#dc3545',
+                    confirmButtonColor: '#1E3A8A',
                 });
                 btn.disabled = false;
                 btn.innerHTML = '<i class="bi bi-send"></i> Enviar sugerencia';
