@@ -74,6 +74,20 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow-sm h-100 border-av-yellow">
+                            <div class="card-body text-center py-4 d-flex flex-column">
+                                <i class="bi bi-people-fill display-3 text-av-yellow"></i>
+                                <h5 class="card-title mt-3">Voluntarios</h5>
+                                <p class="card-text small text-muted">
+                                    Ofrece tu tiempo y habilidades como voluntario.
+                                </p>
+                                <a href="/voluntarios" class="btn btn-av-yellow mt-auto">
+                                    <i class="bi bi-people-fill"></i> Ser voluntario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
                         <div class="card shadow-sm h-100 border-av-blue">
                             <div class="card-body text-center py-4 d-flex flex-column">
                                 <i class="bi bi-info-circle-fill display-3 text-av-blue"></i>
@@ -82,20 +96,6 @@
                                     Comunicados oficiales y Protección Civil.
                                 </p>
                                 <a href="#" class="btn btn-av-outline-blue mt-auto">
-                                    <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card shadow-sm h-100 border-av-red">
-                            <div class="card-body text-center py-4 d-flex flex-column">
-                                <i class="bi bi-bandaid-fill display-3 text-av-red"></i>
-                                <h5 class="card-title mt-3">Asistencia Médica</h5>
-                                <p class="card-text small text-muted">
-                                    Hospitales y puntos de atención médica.
-                                </p>
-                                <a href="#" class="btn btn-av-outline-red mt-auto">
                                     <i class="bi bi-box-arrow-up-right"></i> Ingresar
                                 </a>
                             </div>

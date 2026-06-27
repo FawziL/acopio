@@ -28,7 +28,7 @@
                 <p class="text-muted">Completa los datos para registrar un centro de acopio o un refugio.</p>
 
                 <div class="card shadow-sm">
-                    <div class="card-body">
+                    <div class="card-body small">
                         <form id="form-crear">
 
                             <div class="mb-3">
@@ -79,9 +79,8 @@
                                 <label class="form-label">Teléfono</label>
                                 <div class="input-group">
                                     <select id="paso2-tel-operadora" class="form-select" style="max-width: 140px;" required>
-                                        <option value="">Operadora</option>
+                                        <option value="0414" selected>0414</option>
                                         <option value="0412">0412</option>
-                                        <option value="0414">0414</option>
                                         <option value="0416">0416</option>
                                         <option value="0422">0422</option>
                                         <option value="0424">0424</option>
@@ -95,10 +94,10 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="paso2-foto" class="form-label">Foto <small class="text-muted">(opcional)</small></label>
-                                <input type="file" id="paso2-foto" class="form-control" accept="image/jpeg,image/png,image/webp">
+                                <label for="paso2-foto" class="form-label">Foto</label>
+                                <input type="file" id="paso2-foto" class="form-control" accept="image/jpeg,image/png,image/webp" required>
                                 <img id="paso2-foto-preview" class="mt-2 rounded d-none" style="max-width: 100%; max-height: 200px; object-fit: cover;">
-                                <div class="form-text">Máximo 5 MB. JPG, PNG o WebP.</div>
+                                <div class="form-text">Máximo 1 MB. JPG, PNG o WebP.</div>
                             </div>
 
                             <div class="mb-3">
@@ -172,6 +171,17 @@
 
             const fotoInput = document.getElementById('paso2-foto');
             const fotoFile = fotoInput ? fotoInput.files[0] : null;
+            if (!fotoFile) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Foto requerida',
+                    text: 'Debes seleccionar una foto del centro.',
+                    confirmButtonColor: '#dc3545',
+                });
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-check-circle"></i> Registrar';
+                return;
+            }
 
             const paso2Estado = document.getElementById('paso2-estado');
             const paso2Municipio = document.getElementById('paso2-municipio');

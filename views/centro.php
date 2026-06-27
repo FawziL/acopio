@@ -46,6 +46,10 @@
     $stmtInv->execute([':centro_id' => $id]);
     $items = $stmtInv->fetchAll();
 
+    $stmtUltInv = $pdo->prepare("SELECT MAX(updated_at) AS ultima_actualizacion FROM inventario WHERE centro_id = :centro_id AND activo = 1");
+    $stmtUltInv->execute([':centro_id' => $id]);
+    $ultInv = $stmtUltInv->fetchColumn();
+
     $falta = array_filter($items, fn($i) => $i['tipo'] === 'falta');
     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
     ?>
@@ -100,6 +104,16 @@
                                 <th class="ps-0">Registrado</th>
                                 <td><small class="text-muted"><?= htmlspecialchars($centro['created_at']) ?></small></td>
                             </tr>
+                            <tr>
+                                <th class="ps-0">Actualizado</th>
+                                <td><small class="text-muted"><?= htmlspecialchars($centro['updated_at']) ?></small></td>
+                            </tr>
+                            <?php if ($ultInv): ?>
+                            <tr>
+                                <th class="ps-0">Inventario</th>
+                                <td><small class="text-muted"><?= htmlspecialchars($ultInv) ?></small></td>
+                            </tr>
+                            <?php endif; ?>
                         </table>
                     </div>
                 </div>
