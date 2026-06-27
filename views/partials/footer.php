@@ -72,24 +72,19 @@
         </p>
         <p class="av-footer-text mt-2">
           <a href="/portales" class="av-footer-email me-3"><i class="bi bi-globe2"></i> Portales</a>
-          <a href="/voluntarios/lista" class="av-footer-email me-3"><i class="bi bi-people"></i> Voluntarios</a>
+          <a href="/voluntarios" class="av-footer-email me-3"><i class="bi bi-people"></i> Voluntarios</a>
           <a href="/sugerencias" class="av-footer-email"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </p>
       </div>
-      <a href="/registrar" class="av-footer-cta">
-        <i class="bi bi-plus-circle"></i>
-        Registrar centro o refugio
-      </a>
-    </div>
-    
-    <div class="av-footer-bottom mt-3">
-      <div class="av-footer-copy">
-        <p class="av-footer-text">
-          <a href="https://wa.me/?text=Plataforma%20de%20ayuda%20para%20la%20emergencia%20en%20Venezuela%3A%20Centros%20de%20Acopio%2C%20Refugios%20y%20m%C3%A1s%20%E2%80%94%20https%3A%2F%2Fapoyavenezuela.com"
-             class="btn btn-av-green btn-sm" target="_blank" rel="noopener">
-            <i class="bi bi-whatsapp"></i> Compartir en WhatsApp
-          </a>
-        </p>
+      <div class="d-flex flex-column gap-2">
+        <a href="/registrar" class="av-footer-cta">
+          <i class="bi bi-plus-circle"></i>
+          Registrar centro o refugio
+        </a>
+        <a href="https://wa.me/?text=Plataforma%20de%20ayuda%20para%20la%20emergencia%20en%20Venezuela%3A%20Centros%20de%20Acopio%2C%20Refugios%20y%20m%C3%A1s%20%E2%80%94%20https%3A%2F%2Fapoyavenezuela.com"
+           class="av-footer-cta av-footer-cta--whatsapp" target="_blank" rel="noopener">
+          <i class="bi bi-whatsapp"></i> Compartir en WhatsApp
+        </a>
       </div>
     </div>
   </div>

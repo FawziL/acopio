@@ -551,6 +551,16 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--av-blue-deep);
 }
 
+.av-footer-cta--whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.av-footer-cta--whatsapp:hover {
+  background: #1EBE57;
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .av-footer-bottom {
     flex-direction: column;
