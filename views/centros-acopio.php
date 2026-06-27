@@ -171,20 +171,8 @@
                                         <?php if (count($sobra) > 3): ?>
                                             <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
                                         <?php endif; ?>
-                                        <?php if (count($sobra) > 0): ?>
-                                            <br>
-                                            <span class="text-success fw-semibold">✅ Sobra:</span>
-                                            <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
-                                                <span class="badge bg-success bg-opacity-10 text-success me-1"><?= htmlspecialchars($item['item']) ?></span>
-                                            <?php endforeach; ?>
-                                            <?php if (count($sobra) > 3): ?>
-                                                <span class="text-muted small">+<?= count($sobra) - 3 ?></span>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                    </p>
-                                    <p class="card-text small text-muted mb-0">
-                                        <i class="bi bi-clock"></i> <?= htmlspecialchars($centro['created_at']) ?>
-                                    </p>
+                                    <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent">
