@@ -4,39 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centros de Acopio - Venezuela</title>
+    <title>Centros de Acopio - Apoya Venezuela</title>
+    <?php require_once __DIR__ . '/partials/head.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                <i class="bi bi-house-heart-fill"></i> Centros de Acopio
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/centros-acopio"><i class="bi bi-box-seam"></i> Centros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/refugios"><i class="bi bi-house-heart"></i> Refugios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php $activeNav = 'centros'; ?>
+    <?php require_once __DIR__ . '/partials/navbar.php'; ?>
 
-    <div class="container py-4">
+    <main class="av-main">
+        <div class="container py-4">
 
         <div class="row mb-4">
             <div class="col-12 col-md-8">
@@ -44,7 +23,7 @@
                 <p class="text-muted">Consulta los centros activos y lo que necesitan o tienen disponible.</p>
             </div>
             <div class="col-12 col-md-4 text-md-end">
-                <a href="/registrar" class="btn btn-danger">
+                <a href="/registrar" class="btn btn-av-blue">
                     <i class="bi bi-plus-circle"></i> Registrar
                 </a>
             </div>
@@ -71,7 +50,7 @@
                 </select>
             </div>
             <div class="col-12 col-md-4">
-                <button type="submit" class="btn btn-outline-danger w-100">
+                <button type="submit" class="btn btn-av-outline-blue w-100">
                     <i class="bi bi-funnel"></i> Filtrar
                 </button>
             </div>
@@ -130,7 +109,7 @@
             <div class="text-center py-5">
                 <i class="bi bi-search display-1 text-muted"></i>
                 <p class="mt-3 text-muted">No hay centros registrados con esos filtros.</p>
-                <a href="/centros-acopio" class="btn btn-outline-danger">Limpiar filtros</a>
+                <a href="/centros-acopio" class="btn btn-av-outline-blue">Limpiar filtros</a>
             </div>
         <?php else: ?>
             <div class="row g-3">
@@ -157,7 +136,7 @@
                             <?php endif; ?>
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <span class="badge bg-danger bg-opacity-10 text-danger me-1">
+                                    <span class="badge badge-av-blue-light me-1">
                                         <?= htmlspecialchars($centro['estado']) ?>
                                     </span>
                                     <span class="badge bg-secondary"><?= htmlspecialchars($centro['municipio']) ?></span>
@@ -175,9 +154,9 @@
                                 <?php endif; ?>
                                 <div class="mt-2 small">
                                     <?php if (count($falta) > 0): ?>
-                                        <span class="text-danger fw-semibold">❌ Falta:</span>
+                                        <span class="text-av-red fw-semibold">❌ Falta:</span>
                                         <?php foreach (array_slice($falta, 0, 3) as $item): ?>
-                                            <span class="badge bg-danger bg-opacity-10 text-danger me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                            <span class="badge badge-av-red-light me-1"><?= htmlspecialchars($item['item']) ?></span>
                                         <?php endforeach; ?>
                                         <?php if (count($falta) > 3): ?>
                                             <span class="text-muted">+<?= count($falta) - 3 ?> más</span>
@@ -185,9 +164,9 @@
                                         <br>
                                     <?php endif; ?>
                                     <?php if (count($sobra) > 0): ?>
-                                        <span class="text-success fw-semibold">✅ Sobra:</span>
+                                        <span class="text-av-green fw-semibold">✅ Sobra:</span>
                                         <?php foreach (array_slice($sobra, 0, 3) as $item): ?>
-                                            <span class="badge bg-success bg-opacity-10 text-success me-1"><?= htmlspecialchars($item['item']) ?></span>
+                                            <span class="badge badge-av-green-light me-1"><?= htmlspecialchars($item['item']) ?></span>
                                         <?php endforeach; ?>
                                         <?php if (count($sobra) > 3): ?>
                                             <span class="text-muted">+<?= count($sobra) - 3 ?> más</span>
@@ -196,7 +175,7 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent">
-                                <a href="/centro-acopio/<?= $centro['id'] ?>" class="btn btn-outline-danger btn-sm w-100">
+                                <a href="/centro-acopio/<?= $centro['id'] ?>" class="btn btn-av-outline-blue btn-sm w-100">
                                     <i class="bi bi-eye"></i> Ver detalle
                                 </a>
                             </div>
@@ -224,19 +203,10 @@
             <?php endif; ?>
 
         <?php endif; ?>
-    </div>
+        </div>
+    </main>
 
-    <footer class="bg-light py-3 mt-4">
-        <div class="container text-center text-muted small">
-            <i class="bi bi-house-heart-fill text-danger"></i>
-            Centros de Acopio &mdash; Apoya Venezuela
-            &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
-            <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
-        </div>
-        <div class="container text-center text-muted small mt-1">
-            Proyecto libre de uso, sin fines de lucro ni monetización. No nos hacemos responsables por la veracidad de la información. Solo colaboramos por la situación de Venezuela.
-        </div>
-    </footer>
+    <?php require_once __DIR__ . '/partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/app.js"></script>

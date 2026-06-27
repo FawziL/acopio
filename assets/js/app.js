@@ -2,6 +2,46 @@
  * Carga municipios al cambiar el estado (filtro y formularios).
  */
 document.addEventListener('DOMContentLoaded', function () {
+    // --- Botón difundir (copiar link) ---
+    const btnDifundir = document.getElementById('btn-difundir');
+    if (btnDifundir) {
+        btnDifundir.addEventListener('click', function() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(function() {
+                const originalHTML = btnDifundir.innerHTML;
+                btnDifundir.innerHTML = '<i class="bi bi-check"></i> Enlace copiado';
+                btnDifundir.classList.remove('btn-av-outline-yellow');
+                btnDifundir.classList.add('btn-av-green');
+                setTimeout(function() {
+                    btnDifundir.innerHTML = originalHTML;
+                    btnDifundir.classList.remove('btn-av-green');
+                    btnDifundir.classList.add('btn-av-outline-yellow');
+                }, 2000);
+            }).catch(function() {
+                alert('No se pudo copiar el enlace. Copia manualmente: ' + url);
+            });
+        });
+    }
+
+    // --- Tabs de catálogo ---
+    const tabs = document.querySelectorAll('.av-tab');
+    const panels = document.querySelectorAll('.av-tab-panel');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            const targetTab = this.dataset.tab;
+
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panels.forEach(function(p) { p.classList.remove('active'); });
+
+            this.classList.add('active');
+            const targetPanel = document.getElementById('panel-' + targetTab);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+        });
+    });
+
     const estadoSelect = document.getElementById('filtro-estado');
     const municipioSelect = document.getElementById('filtro-municipio');
 
