@@ -34,9 +34,15 @@
                     </a>
                     <div class="mt-3">
                         <p class="text-muted small mb-2">¿No sabes cómo apoyar? <strong>Difunde</strong></p>
-                        <button type="button" class="btn btn-av-outline-yellow btn-sm" id="btn-difundir">
-                            <i class="bi bi-share"></i> Compartir enlace
-                        </button>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="https://wa.me/?text=Plataforma%20de%20ayuda%20para%20la%20emergencia%20en%20Venezuela%3A%20Centros%20de%20Acopio%2C%20Refugios%20y%20m%C3%A1s%20%E2%80%94%20https%3A%2F%2Fapoyavenezuela.com"
+                               class="btn btn-av-green btn-sm" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i> WhatsApp
+                            </a>
+                            <button type="button" class="btn btn-av-outline-yellow btn-sm" id="btn-difundir">
+                                <i class="bi bi-share"></i> Copiar enlace
+                            </button>
+                        </div>
                     </div>
 
                 </div>
@@ -318,5 +324,15 @@
     <?php require_once __DIR__ . '/views/partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.getElementById('btn-difundir').addEventListener('click', function () {
+        navigator.clipboard.writeText('https://apoyavenezuela.com').then(() => {
+            this.innerHTML = '<i class="bi bi-check-lg"></i> Copiado';
+            setTimeout(() => {
+                this.innerHTML = '<i class="bi bi-share"></i> Copiar enlace';
+            }, 2000);
+        });
+    });
+    </script>
 </body>
 </html>
