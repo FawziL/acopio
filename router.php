@@ -72,6 +72,18 @@ if ($uri === '/averias/lista') {
     return true;
 }
 
+// Ruta: /damnificados (formulario)
+if ($uri === '/damnificados') {
+    require __DIR__ . '/views/damnificados.php';
+    return true;
+}
+
+// Ruta: /damnificados/lista
+if ($uri === '/damnificados/lista') {
+    require __DIR__ . '/views/damnificados-lista.php';
+    return true;
+}
+
 // 404
 http_response_code(404);
 echo 'Not found: ' . htmlspecialchars($uri);

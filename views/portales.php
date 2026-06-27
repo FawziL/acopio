@@ -70,8 +70,8 @@
                                 </a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Portal #3</span>
-                                <a href="#" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
+                                <span class="small">Info Central Terremoto Venezuela</span>
+                                <a href="https://info-central-terremoto-venezuela.com/index.html" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
                                     <i class="bi bi-box-arrow-up-right"></i>
                                 </a>
                             </li>

@@ -29,6 +29,9 @@
                         <a class="nav-link" href="/averias/lista"><i class="bi bi-exclamation-triangle"></i> Averías</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/damnificados/lista"><i class="bi bi-people"></i> Damnificados</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
