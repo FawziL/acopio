@@ -30,6 +30,9 @@
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
                     </li>
                 </ul>
@@ -68,6 +71,10 @@
     ");
     $stmtInv->execute([':refugio_id' => $id]);
     $items = $stmtInv->fetchAll();
+
+    $stmtUltInv = $pdo->prepare("SELECT MAX(updated_at) AS ultima_actualizacion FROM inventario_refugios WHERE refugio_id = :refugio_id AND activo = 1");
+    $stmtUltInv->execute([':refugio_id' => $id]);
+    $ultInv = $stmtUltInv->fetchColumn();
 
     $falta = array_filter($items, fn($i) => $i['tipo'] === 'falta');
     $sobra = array_filter($items, fn($i) => $i['tipo'] === 'sobra');
@@ -122,6 +129,16 @@
                                 <th class="ps-0">Registrado</th>
                                 <td><small class="text-muted"><?= htmlspecialchars($refugio['created_at']) ?></small></td>
                             </tr>
+                            <tr>
+                                <th class="ps-0">Actualizado</th>
+                                <td><small class="text-muted"><?= htmlspecialchars($refugio['updated_at']) ?></small></td>
+                            </tr>
+                            <?php if ($ultInv): ?>
+                            <tr>
+                                <th class="ps-0">Inventario</th>
+                                <td><small class="text-muted"><?= htmlspecialchars($ultInv) ?></small></td>
+                            </tr>
+                            <?php endif; ?>
                         </table>
                     </div>
                 </div>
@@ -458,6 +475,7 @@
             <i class="bi bi-house-heart-fill text-danger"></i>
             Refugios &mdash; Apoya Venezuela
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
     </footer>

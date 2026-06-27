@@ -29,6 +29,9 @@
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
                     </li>
                 </ul>
@@ -46,7 +49,7 @@
                 </p>
 
                 <div class="row g-4">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="card shadow-sm h-100 border-danger">
                             <div class="card-body text-center py-5">
                                 <i class="bi bi-box-seam display-1 text-danger"></i>
@@ -54,13 +57,13 @@
                                 <p class="text-muted">
                                     Puntos de recolección de donaciones. Consulta qué falta y qué sobra en cada centro.
                                 </p>
-                                <a href="/centros-acopio" class="btn btn-danger btn-lg">
+                                <a href="/centros-acopio" class="btn btn-danger">
                                     <i class="bi bi-box-seam"></i> Ver centros de acopio
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="card shadow-sm h-100 border-danger">
                             <div class="card-body text-center py-5">
                                 <i class="bi bi-house-heart-fill display-1 text-danger"></i>
@@ -68,8 +71,22 @@
                                 <p class="text-muted">
                                     Albergues y refugios disponibles para personas damnificadas. Reporta y consulta información.
                                 </p>
-                                <a href="/refugios" class="btn btn-danger btn-lg">
+                                <a href="/refugios" class="btn btn-danger">
                                     <i class="bi bi-house-heart-fill"></i> Ver refugios
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card shadow-sm h-100 border-danger">
+                            <div class="card-body text-center py-5">
+                                <i class="bi bi-people-fill display-1 text-danger"></i>
+                                <h3 class="h4 mt-3">Voluntarios</h3>
+                                <p class="text-muted">
+                                    Ofrece tu tiempo y habilidades. No es una donación, es tu ayuda directa como voluntario.
+                                </p>
+                                <a href="/voluntarios" class="btn btn-danger">
+                                    <i class="bi bi-people-fill"></i> Ser voluntario
                                 </a>
                             </div>
                         </div>
@@ -88,6 +105,32 @@
                     </div>
                 </div>
 
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card shadow-sm border-danger text-center">
+                            <div class="card-body py-4">
+                                <i class="bi bi-share-fill display-4 text-danger"></i>
+                                <h4 class="h5 mt-2">¿No sabes cómo colaborar?</h4>
+                                <p class="text-muted mb-2">Comparte y difunde esta página para que la ayuda llegue a más personas.</p>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <a href="https://wa.me/?text=Plataforma%20de%20ayuda%20para%20la%20emergencia%20en%20Venezuela%3A%20Centros%20de%20Acopio%2C%20Refugios%20y%20m%C3%A1s%20%E2%80%94%20https%3A%2F%2Fapoyavenezuela.com"
+                                       class="btn btn-success" target="_blank" rel="noopener">
+                                        <i class="bi bi-whatsapp"></i> Compartir en WhatsApp
+                                    </a>
+                                    <button class="btn btn-outline-danger" onclick="navigator.clipboard.writeText('https://apoyavenezuela.com').then(()=>{this.innerHTML='<i class=\'bi bi-check-lg\'></i> Copiado'})">
+                                        <i class="bi bi-link-45deg"></i> Copiar enlace
+                                    </button>
+                                </div>
+                                <div class="mt-2 text-muted small">
+                                    <code>https://apoyavenezuela.com</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -97,6 +140,7 @@
             <i class="bi bi-house-heart-fill text-danger"></i>
             Apoya Venezuela &mdash; Centros de Acopio y Refugios
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
         <div class="container text-center text-muted small mt-1">

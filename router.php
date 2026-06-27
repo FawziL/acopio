@@ -41,6 +41,18 @@ if (preg_match('#^/refugio/(\d+)$#', $uri, $m)) {
     return true;
 }
 
+// Ruta: /voluntarios
+if ($uri === '/voluntarios') {
+    require __DIR__ . '/views/voluntarios.php';
+    return true;
+}
+
+// Ruta: /voluntarios/lista
+if ($uri === '/voluntarios/lista') {
+    require __DIR__ . '/views/voluntarios-lista.php';
+    return true;
+}
+
 // 404
 http_response_code(404);
 echo 'Not found: ' . htmlspecialchars($uri);

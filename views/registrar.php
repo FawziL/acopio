@@ -30,6 +30,9 @@
                         <a class="nav-link" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
                     </li>
                 </ul>
@@ -145,6 +148,7 @@
             <i class="bi bi-house-heart-fill text-danger"></i>
             Apoya Venezuela
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
     </footer>

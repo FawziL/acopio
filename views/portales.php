@@ -29,6 +29,9 @@
                         <a class="nav-link active" href="/portales"><i class="bi bi-globe2"></i> Portales</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/voluntarios/lista"><i class="bi bi-people"></i> Voluntarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/sugerencias"><i class="bi bi-chat-dots"></i> Sugerencias</a>
                     </li>
                 </ul>
@@ -52,14 +55,14 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">desaparecidosterremotovenezuela</span>
+                                <span class="small">Desaparecidos Terremoto Venezuela</span>
                                 <a href="https://desaparecidosterremotovenezuela.com/" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
                                     <i class="bi bi-box-arrow-up-right"></i>
                                 </a>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                <span class="small">Portal #2</span>
-                                <a href="#" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
+                                <span class="small">Venezuela te busca</span>
+                                <a href="https://venezuelatebusca.com/" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener">
                                     <i class="bi bi-box-arrow-up-right"></i>
                                 </a>
                             </li>
@@ -77,55 +80,59 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-danger">
                     <div class="card-body text-center py-4">
-                        <i class="bi bi-bandaid-fill display-3 text-danger"></i>
-                        <h5 class="card-title mt-3">Asistencia Médica</h5>
-                        <p class="card-text small text-muted">Hospitales, ambulatorios y puntos de atención médica habilitados.</p>
-                        <a href="#" class="btn btn-outline-danger" target="_blank" rel="noopener">
-                            <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body text-center py-4">
-                        <i class="bi bi-gift-fill display-3 text-danger"></i>
-                        <h5 class="card-title mt-3">Donaciones Nacionales</h5>
-                        <p class="card-text small text-muted">Plataformas oficiales y campañas de donación a nivel nacional.</p>
-                        <a href="#" class="btn btn-outline-danger" target="_blank" rel="noopener">
-                            <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body text-center py-4">
-                        <i class="bi bi-info-circle-fill display-3 text-danger"></i>
-                        <h5 class="card-title mt-3">Información Oficial</h5>
-                        <p class="card-text small text-muted">Comunicados oficiales del gobierno y Protección Civil.</p>
-                        <a href="#" class="btn btn-outline-danger" target="_blank" rel="noopener">
-                            <i class="bi bi-box-arrow-up-right"></i> Ingresar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-danger">
-                    <div class="card-body text-center py-4">
                         <i class="bi bi-megaphone-fill display-3 text-danger"></i>
                         <h5 class="card-title mt-3">Voluntariado</h5>
                         <p class="card-text small text-muted">Regístrate como voluntario o busca grupos de ayuda organizada.</p>
-                        <a href="#" class="btn btn-outline-danger" target="_blank" rel="noopener">
+                        <a href="/voluntarios" class="btn btn-outline-danger" rel="noopener">
                             <i class="bi bi-box-arrow-up-right"></i> Ingresar
                         </a>
                     </div>
                 </div>
             </div>
 
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-danger">
+                    <div class="card-body text-center py-4">
+                        <i class="bi bi-bandaid-fill display-3 text-danger"></i>
+                        <h5 class="card-title mt-3">Asistencia Médica</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span class="small">Ambulancia Metropolitano · (0212) 545.45.45 / 545.46.55 / 577.92.09</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span class="small">Aeroambulancias · (0212) 993.25.41 / 992.89.80 / 992.89.90 / 991.79.40</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span class="small">Rescarven · (0212) 993.69.11 / 993.69.91 / 993.13.10 / 993.33.67</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-12">
+                <div class="card shadow-sm border-danger text-center">
+                    <div class="card-body py-4">
+                        <i class="bi bi-share-fill display-4 text-danger"></i>
+                        <h4 class="h5 mt-2">¿No sabes cómo colaborar?</h4>
+                        <p class="text-muted mb-2">Comparte y difunde esta página para que la ayuda llegue a más personas.</p>
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <a href="https://wa.me/?text=Portales%20%C3%BAtiles%20para%20la%20emergencia%20en%20Venezuela%3A%20https%3A%2F%2Fapoyavenezuela.com%2Fportales"
+                               class="btn btn-success" target="_blank" rel="noopener">
+                                <i class="bi bi-whatsapp"></i> Compartir en WhatsApp
+                            </a>
+                            <button class="btn btn-outline-danger" onclick="navigator.clipboard.writeText('https://apoyavenezuela.com/portales').then(()=>{this.innerHTML='<i class=\'bi bi-check-lg\'></i> Copiado'})">
+                                <i class="bi bi-link-45deg"></i> Copiar enlace
+                            </button>
+                        </div>
+                        <div class="mt-2 text-muted small">
+                            <code>https://apoyavenezuela.com/portales</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="alert alert-warning mt-4 mb-0" role="alert">
@@ -141,6 +148,7 @@
             <i class="bi bi-house-heart-fill text-danger"></i>
             Apoya Venezuela &mdash; Portales Relevantes
             &middot; <a href="/portales" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-globe2"></i> Portales</a>
+            <a href="/voluntarios/lista" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-people"></i> Voluntarios</a>
             <a href="/sugerencias" class="badge bg-danger bg-opacity-10 text-danger text-decoration-none ms-1"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </div>
         <div class="container text-center text-muted small mt-2">
