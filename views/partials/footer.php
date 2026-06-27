@@ -72,7 +72,7 @@
         </p>
         <p class="av-footer-text mt-2">
           <a href="/portales" class="av-footer-email me-3"><i class="bi bi-globe2"></i> Portales</a>
-          <a href="/voluntarios" class="av-footer-email me-3"><i class="bi bi-people"></i> Voluntarios</a>
+          <a href="/voluntarios/lista" class="av-footer-email me-3"><i class="bi bi-people"></i> Voluntarios</a>
           <a href="/sugerencias" class="av-footer-email"><i class="bi bi-chat-dots"></i> Sugerencias</a>
         </p>
       </div>

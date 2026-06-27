@@ -26,7 +26,7 @@
           </a>
         </li>
         <li>
-          <a class="av-nav-link<?= $activeNav === 'voluntarios' ? ' active' : '' ?>" href="/voluntarios">
+          <a class="av-nav-link<?= $activeNav === 'voluntarios' ? ' active' : '' ?>" href="/voluntarios/lista">
             <i class="bi bi-people"></i>Voluntarios
           </a>
         </li>
